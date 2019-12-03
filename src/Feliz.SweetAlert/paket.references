@@ -1,0 +1,7 @@
+﻿group SweetAlert
+    Fable.Core
+    Fable.Browser.Dom
+    Fable.Elmish.React
+    Fable.Promise
+    Feliz
+    FSharp.Core
