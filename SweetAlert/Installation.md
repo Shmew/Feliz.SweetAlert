@@ -7,7 +7,7 @@ dotnet add package Feliz.SweetAlert
 # paket
 paket add Feliz.SweetAlert --project ./project/path
 ```
-Then you need to install the corresponding npm dependencies. In case of Feliz.SweetAlert, it is `sweetalert2`, and `sweetalert2-react-content`
+Then you need to install the corresponding npm dependencies. In case of Feliz.SweetAlert, it is `sweetalert2` and `sweetalert2-react-content`
 ```bash
 npm install sweetalert2
 npm install sweetalert2-react-content
