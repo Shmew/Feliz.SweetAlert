@@ -61,12 +61,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SweetAlert", "SweetAlert", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{58CFED6C-1A2A-4BD0-9E2C-E1DBAD02B756}"
+	ProjectSection(SolutionItems) = preProject
+		public\SweetAlert\Examples\Animation.md = public\SweetAlert\Examples\Animation.md
+		public\SweetAlert\Examples\CloseTimer.md = public\SweetAlert\Examples\CloseTimer.md
+		public\SweetAlert\Examples\DynamicQueue.md = public\SweetAlert\Examples\DynamicQueue.md
+		public\SweetAlert\Examples\Image.md = public\SweetAlert\Examples\Image.md
+		public\SweetAlert\Examples\InputTypes.md = public\SweetAlert\Examples\InputTypes.md
+		public\SweetAlert\Examples\React.md = public\SweetAlert\Examples\React.md
+	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Feliz.SweetAlert", "src\Feliz.SweetAlert\Feliz.SweetAlert.fsproj", "{BCE5ECA5-D4CA-43BF-ACC1-496391C15F87}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic", "Basic", "{4F9E0A7D-0809-4E6D-8563-EC105630D599}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simple", "Simple", "{4F9E0A7D-0809-4E6D-8563-EC105630D599}"
 	ProjectSection(SolutionItems) = preProject
-		public\SweetAlert\Examples\Basic\Basic.md = public\SweetAlert\Examples\Basic\Basic.md
+		public\SweetAlert\Examples\Simple\Basic.md = public\SweetAlert\Examples\Simple\Basic.md
+		public\SweetAlert\Examples\Simple\WithHandlers.md = public\SweetAlert\Examples\Simple\WithHandlers.md
+		public\SweetAlert\Examples\Simple\WithTitles.md = public\SweetAlert\Examples\Simple\WithTitles.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elmish", "Elmish", "{8235D433-804C-4A66-84E8-530012F67B1C}"
+	ProjectSection(SolutionItems) = preProject
+		public\SweetAlert\Examples\Elmish\ReactAndHandler.md = public\SweetAlert\Examples\Elmish\ReactAndHandler.md
+		public\SweetAlert\Examples\Elmish\Simple.md = public\SweetAlert\Examples\Elmish\Simple.md
 	EndProjectSection
 EndProject
 Global
@@ -96,6 +112,7 @@ Global
 		{7925E95C-D2A9-4768-8A53-4693BA259FDD} = {CABBED80-2F75-4DFE-8F77-7F7FDFDC8008}
 		{58CFED6C-1A2A-4BD0-9E2C-E1DBAD02B756} = {7925E95C-D2A9-4768-8A53-4693BA259FDD}
 		{4F9E0A7D-0809-4E6D-8563-EC105630D599} = {58CFED6C-1A2A-4BD0-9E2C-E1DBAD02B756}
+		{8235D433-804C-4A66-84E8-530012F67B1C} = {58CFED6C-1A2A-4BD0-9E2C-E1DBAD02B756}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96DAE6A9-B1CC-4FF7-B08C-D5FBFD55B385}

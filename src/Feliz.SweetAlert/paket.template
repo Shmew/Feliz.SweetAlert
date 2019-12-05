@@ -1,13 +1,12 @@
 ﻿type project
-licenseExpression https://github.com/Shmew/Feliz.Plotly/blob/master/LICENSE
+licenseExpression https://github.com/Shmew/Feliz.SweetAlert/blob/master/LICENSE
 authors Cody Johnson
 description
-    Fable bindings written in the Feliz-style for plotly.js
+    Fable bindings written in the Feliz-style for sweetalert2
 language
     F#
 tags
-    fsharp, fable, react, visualization, graph, chart
+    fsharp, fable, react, alerts, modal, sweetalert, feliz
 files
     *.fsproj ==> fable
     *.fs ==> fable
-    Props/*.fs ==> fable/Props

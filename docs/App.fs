@@ -66,14 +66,24 @@ let centeredSpinner =
     ]
 
 let samples = 
-    let basicSamples =
-        let basic =
-            [ "swal-basic", Samples.Basic.render() ]
+    let elmishSamples =
+        [ "swal-elmish-simple", Samples.Elmish.Simple.render()
+          "swal-elmish-reactandhandler", Samples.Elmish.ReactAndHandler.render() ]
 
-        [ basic ]
-        |> List.concat
+    let simpleSamples =
+        [ "swal-simple-basic", Samples.Simple.Basic.render()
+          "swal-simple-withtitles", Samples.Simple.WithTitles.render()
+          "swal-simple-withhandlers", Samples.Simple.WithHandlers.render() ]      
 
-    [ basicSamples ]
+    let mainSamples =
+        [ "swal-react", Samples.React.render()
+          "swal-inputtypes", Samples.InputTypes.render()
+          "swal-animation", Samples.Animation.render() 
+          "swal-image", Samples.Image.render() 
+          "swal-closetimer", Samples.CloseTimer.render() 
+          "swal-dynamicqueue", Samples.DynamicQueue.render() ]
+
+    [ elmishSamples; simpleSamples; mainSamples ]
     |> List.concat
 
 let githubPath (rawPath: string) =
@@ -290,9 +300,21 @@ let sidebar (state: State) dispatch =
                     menuItem "Release Notes" [ Urls.SweetAlert; Urls.ReleaseNotes ]
                     menuItem "Contributing" [ Urls.SweetAlert; Urls.Contributing ]
                     menuLabel "Examples"
-                    nestedMenuList "Test" [ Urls.SweetAlert; Urls.Examples; Urls.Basic ] [
-                        nestedMenuItem "Basic" [ Urls.Basic ]
+                    nestedMenuList "Elmish" [ Urls.SweetAlert; Urls.Examples; Urls.Elmish ] [
+                        nestedMenuItem "Simple" [ Urls.Simple ]
+                        nestedMenuItem "React and Handling" [ Urls.ReactAndHandler ]
                     ]
+                    nestedMenuList "Simple" [ Urls.SweetAlert; Urls.Examples; Urls.Simple ] [
+                        nestedMenuItem "Basic" [ Urls.Basic ]
+                        nestedMenuItem "With Titles" [ Urls.WithTitles ]
+                        nestedMenuItem "With Handlers" [ Urls.WithHandlers ]
+                    ]
+                    menuItem "With React" [ Urls.SweetAlert; Urls.Examples; Urls.React ]
+                    menuItem "Input Types" [ Urls.SweetAlert; Urls.Examples; Urls.InputTypes ]
+                    menuItem "Custom Animation" [ Urls.SweetAlert; Urls.Examples; Urls.Animation ]
+                    menuItem "Image" [ Urls.SweetAlert; Urls.Examples; Urls.Image ]
+                    menuItem "Close Timer" [ Urls.SweetAlert; Urls.Examples; Urls.CloseTimer ]
+                    menuItem "Dynamic Queue" [ Urls.SweetAlert; Urls.Examples; Urls.DynamicQueue ]
                 ]
             ]
         ]
@@ -309,13 +331,24 @@ let sidebar (state: State) dispatch =
 let readme = sprintf "https://raw.githubusercontent.com/%s/%s/master/README.md"
 let contributing = sprintf "https://raw.githubusercontent.com/Zaid-Ajaj/Feliz/master/public/Feliz/Contributing.md"
 
-let basicExamples (currentPath: string list) =
+let elmishExamples (currentPath: string list) =
     match currentPath with
-    | [ Urls.Basic ] -> [ "Basic.md" ]
+    | [ Urls.Simple ] -> [ "Simple.md" ]
+    | [ Urls.ReactAndHandler ] -> [ "ReactAndHandler.md" ]
     | _ -> [ ]
     |> fun path ->
         if path |> List.isEmpty then []
-        else [ Urls.Basic ] @ path
+        else [ Urls.Elmish ] @ path
+
+let simpleExamples (currentPath: string list) =
+    match currentPath with
+    | [ Urls.Basic ] -> [ "Basic.md" ]
+    | [ Urls.WithTitles ] -> [ "WithTitles.md" ]
+    | [ Urls.WithHandlers ] -> [ "WithHandlers.md" ]
+    | _ -> [ ]
+    |> fun path ->
+        if path |> List.isEmpty then []
+        else [ Urls.Simple ] @ path
 
 let content state dispatch =
     let tryTakePath (basePath: string list) (path: string list) =
@@ -331,7 +364,14 @@ let content state dispatch =
     | [ Urls.SweetAlert; Urls.Contributing ] -> lazyView loadMarkdown [ contributing ]
     | _ when tryTakePath state.CurrentPath [ Urls.SweetAlert; Urls.Examples ] -> 
         match state.CurrentPath |> List.skip 2 with
-        | basicPath when tryTakePath basicPath [ Urls.Basic ] -> basicPath |> List.skip 1 |> basicExamples
+        | elmishPath when tryTakePath elmishPath [ Urls.Elmish ] -> elmishPath |> List.skip 1 |> elmishExamples
+        | simplePath when tryTakePath simplePath [ Urls.Simple ] -> simplePath |> List.skip 1 |> simpleExamples
+        | [ Urls.React ] -> [ "React.md" ]
+        | [ Urls.InputTypes ] -> [ "InputTypes.md" ]
+        | [ Urls.Animation ] -> [ "Animation.md" ]
+        | [ Urls.Image ] -> [ "Image.md" ]
+        | [ Urls.CloseTimer ] -> [ "CloseTimer.md" ]
+        | [ Urls.DynamicQueue ] -> [ "DynamicQueue.md" ]
         | _ -> [ ]
         |> fun path ->
             if path |> List.isEmpty then Html.div [ for segment in state.CurrentPath -> Html.p segment ]

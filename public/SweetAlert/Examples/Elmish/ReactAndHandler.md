@@ -1,23 +1,9 @@
-# Feliz.SweetAlert (alpha) [![Nuget](https://img.shields.io/nuget/v/Feliz.SweetAlert.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.SweetAlert)
+﻿# Feliz.SweetAlert - Elmish Alerts using React and Msgs
 
-Fable bindings for [sweetalert2](https://github.com/sweetalert2/sweetalert2) and [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) with [Feliz](https://github.com/Zaid-Ajaj/Feliz) style api for use within React applications.
+```fsharp:swal-elmish-reactandhandler
+[<RequireQualifiedAccess>]
+module Samples.Elmish.ReactAndHandler
 
-Implemented as both normal functions and Elmish commands, for maximum flexibility.
-
-See the full documentation with live examples: [https://shmew.github.io/Feliz.SweetAlert](https://shmew.github.io/Feliz.SweetAlert/)
-
-A quick look:
-
-```fs
-Html.button [
-    prop.onClick <| fun _ -> Swal.fire [ swal.text "Howdy!" ]
-    prop.text "Fire!"
-]
-```
-
-With React components and Elmish:
-
-```fs
 open Elmish
 open Fable.Core.JsInterop
 open Feliz
@@ -123,5 +109,3 @@ let view = React.functionComponent (fun (input: {| model: Model; dispatch: Msg -
 
 let render () = React.elmishComponent("ElmishBasic",init(), update, (fun model dispatch -> view {| model = model; dispatch = dispatch |}))
 ```
-
-If you do not use [Feliz](https://github.com/Zaid-Ajaj/Feliz) or need inline alerts there are alternative bindings over at [Elmish.SweetAlert](https://github.com/Zaid-Ajaj/Elmish.SweetAlert).

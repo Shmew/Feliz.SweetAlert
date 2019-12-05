@@ -11,6 +11,7 @@
     <Compile Include="Bindings.fs" />
     <Compile Include="Props.fs" />
     <Compile Include="Swal.fs" />
+    <Compile Include="Elmish.fs" />
     <None Include="paket.references" />
     <None Include="paket.template" />
   </ItemGroup>

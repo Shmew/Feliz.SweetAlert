@@ -7,7 +7,17 @@
     <EmbeddedResource Remove="Plotly\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SweetAlert\Examples\Basic\Basic.fs" />
+    <Compile Include="SweetAlert\Examples\Elmish\Simple.fs" />
+    <Compile Include="SweetAlert\Examples\Elmish\ReactAndHandler.fs" />
+    <Compile Include="SweetAlert\Examples\Simple\Basic.fs" />
+    <Compile Include="SweetAlert\Examples\Simple\WithTitles.fs" />
+    <Compile Include="SweetAlert\Examples\Simple\WithHandlers.fs" />
+    <Compile Include="SweetAlert\Examples\React.fs" />
+    <Compile Include="SweetAlert\Examples\InputTypes.fs" />
+    <Compile Include="SweetAlert\Examples\Animation.fs" />
+    <Compile Include="SweetAlert\Examples\Image.fs" />
+    <Compile Include="SweetAlert\Examples\CloseTimer.fs" />
+    <Compile Include="SweetAlert\Examples\DynamicQueue.fs" />
     <Compile Include="..\paket-files\docs\Zaid-Ajaj\Feliz\Feliz.Markdown\Markdown.fs">
       <Paket>True</Paket>
       <Link>Feliz.Markdown/Markdown.fs</Link>
