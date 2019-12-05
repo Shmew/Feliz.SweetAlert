@@ -1,3 +1,6 @@
+### 0.2.1 - Thursday, December 5, 2019
+* Fix femto settings
+
 ### 0.2.0 - Wednesday, December 4, 2019
 * Fix some Elmish Cmd handling
 
