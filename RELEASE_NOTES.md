@@ -1,3 +1,6 @@
+### 0.2.0 - Wednesday, December 4, 2019
+* Fix some Elmish Cmd handling
+
 ### 0.1.0 - Wednesday, December 4, 2019
 * Initial release
 

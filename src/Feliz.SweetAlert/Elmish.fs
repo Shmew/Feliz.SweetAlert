@@ -18,7 +18,8 @@ module Cmd =
             [ Bindings.swal.fire (createObj !!options) |> Bindings.fireWrapperCmd handler ]
 
         /// Determine if modal is shown.
-        static member inline isVisible() : Cmd<_> = [ (fun dispatch -> Bindings.swal.isVisible() |> dispatch) ]
+        static member inline isVisible() : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.isVisible() |> dispatch ]
 
         /// Updates popup options.
         static member inline update (options: ISwalProperty list) : Cmd<_> =
@@ -32,47 +33,61 @@ module Cmd =
             [ fun _ -> Bindings.swal.close (result |> Bindings.buildAlertResult) ]
         
         /// Gets the popup.
-        static member inline getPopup (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getPopup() |> handler ]
+        static member inline getPopup (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getPopup() |> handler |> dispatch ]
 
         /// Gets the modal title.
-        static member inline getTitle (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getTitle() |> handler ]
+        static member inline getTitle (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getTitle() |> handler |> dispatch ]
 
         /// Gets progress steps.
-        static member inline getProgressSteps (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getProgressSteps() |> handler ]
+        static member inline getProgressSteps (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getProgressSteps() |> handler |> dispatch ]
 
         /// Gets the modal content.
-        static member inline getContent (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getContent() |> handler ]
+        static member inline getContent (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getContent() |> handler |> dispatch ]
         
         /// Gets the DOM element where the html/text parameter is rendered to.
-        static member inline getHtmlContainer (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getHtmlContainer() |> handler ]
+        static member inline getHtmlContainer (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getHtmlContainer() |> handler |> dispatch ]
 
         /// Gets the image.
-        static member inline getImage (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getImage() |> handler ]
+        static member inline getImage (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getImage() |> handler |> dispatch ]
 
         /// Gets the close button.
-        static member inline getCloseButton (handler: HTMLElement -> unit) : Cmd<_> =[ fun _ ->  Bindings.swal.getCloseButton() |> handler ]
+        static member inline getCloseButton (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch ->  Bindings.swal.getCloseButton() |> handler |> dispatch ]
 
         /// Gets the current visible icon.
-        static member inline getIcon (handler: HTMLElement option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getIcon() |> handler ]
+        static member inline getIcon (handler: HTMLElement option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getIcon() |> handler |> dispatch ]
 
         /// Gets all icons. The current visible icon will have `style="display: flex"`,
         /// all other will be hidden by `style="display: none"`.
-        static member inline getIcons (handler: HTMLElement list -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getIcons() |> List.ofSeq |> handler ]
+        static member inline getIcons (handler: HTMLElement list -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getIcons() |> List.ofSeq |> handler |> dispatch ]
 
         /// Gets the "Confirm" button.
-        static member inline getConfirmButton (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getConfirmButton() |> handler ]
+        static member inline getConfirmButton (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getConfirmButton() |> handler |> dispatch ]
 
         /// Gets the "Cancel" button.
-        static member inline getCancelButton (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getCancelButton() |> handler ]
+        static member inline getCancelButton (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getCancelButton() |> handler |> dispatch ]
 
         /// Gets actions (buttons) wrapper.
-        static member inline getActions (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getActions() |> handler ]
+        static member inline getActions (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getActions() |> handler |> dispatch ]
 
         /// Gets the modal footer.
-        static member inline getFooter (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getFooter() |> handler ]
+        static member inline getFooter (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getFooter() |> handler |> dispatch ]
 
         /// Gets all focusable elements in the popup.
-        static member inline getFocusableElements (handler: HTMLElement list -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getFocusableElements() |> List.ofSeq |> handler ]
+        static member inline getFocusableElements (handler: HTMLElement list -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getFocusableElements() |> List.ofSeq |> handler |> dispatch ]
 
         /// Enables "Confirm" and "Cancel" buttons.
         static member inline enableButtons() : Cmd<_> = [ fun _ -> Bindings.swal.enableButtons() ]
@@ -87,7 +102,8 @@ module Cmd =
         static member inline hideLoading() : Cmd<_> = [ fun _ -> Bindings.swal.hideLoading() ]
 
         /// Determines if modal is in the loading state.
-        static member inline isLoading (handler: bool -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.isLoading() |> handler ]
+        static member inline isLoading (handler: bool -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.isLoading() |> handler |> dispatch ]
 
         /// Clicks the "Confirm"-button programmatically.
         static member inline clickConfirm() : Cmd<_> = [ fun _ -> Bindings.swal.clickConfirm() ]
@@ -96,13 +112,15 @@ module Cmd =
         static member inline clickCancel() : Cmd<_> = [ fun _ -> Bindings.swal.clickCancel() ]
 
         /// Shows a validation message.
-        static member inline showValidationMessage (message: string) : Cmd<_> = [ fun _ -> Bindings.swal.showValidationMessage message ]
+        static member inline showValidationMessage (message: string) : Cmd<_> = 
+            [ fun _ -> Bindings.swal.showValidationMessage message ]
 
         /// Hides validation message.
         static member inline resetValidationMessage() : Cmd<_> = [ fun _ -> Bindings.swal.resetValidationMessage() ]
 
         /// Gets the input DOM node, this method works with input parameter.
-        static member inline getInput (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getInput() |> handler ]
+        static member inline getInput (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getInput() |> handler |> dispatch ]
 
         /// Disables the modal input. A disabled input element is unusable and un-clickable.
         static member inline disableInput() : Cmd<_> = [ fun _ -> Bindings.swal.disableInput() ]
@@ -111,33 +129,39 @@ module Cmd =
         static member inline enableInput() : Cmd<_> = [ fun _ -> Bindings.swal.enableInput() ]
 
         /// Gets the validation message container.
-        static member inline getValidationMessage (handler: HTMLElement -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getValidationMessage() |> handler ]
+        static member inline getValidationMessage (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getValidationMessage() |> handler |> dispatch ]
 
         /// If `timer` parameter is set, returns number of milliseconds of timer remained.
         /// Otherwise, returns None.
-        static member inline getTimerLeft (handler: int option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.getTimerLeft() |> handler ]
+        static member inline getTimerLeft (handler: int option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getTimerLeft() |> handler |> dispatch ]
 
         /// Stop timer. Returns number of milliseconds of timer remained.
         /// If `timer` parameter isn't set, returns None.
-        static member inline stopTimer (handler: int option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.stopTimer() |> handler ]
+        static member inline stopTimer (handler: int option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.stopTimer() |> handler |> dispatch ]
 
         /// Resume timer. Returns number of milliseconds of timer remained.
         /// If `timer` parameter isn't set, returns None.
-        static member inline resumeTimer (handler: int option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.resumeTimer() |> handler ]
+        static member inline resumeTimer (handler: int option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.resumeTimer() |> handler |> dispatch ]
 
         /// Toggle timer. Returns number of milliseconds of timer remained.
         /// If `timer` parameter isn't set, returns None.
-        static member inline toggleTimer (handler: int option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.toggleTimer() |> handler ]
+        static member inline toggleTimer (handler: int option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.toggleTimer() |> handler |> dispatch ]
 
         /// Check if timer is running. Returns true if timer is running,
         /// and false is timer is paused / stopped.
         /// If `timer` parameter isn't set, returns None.
-        static member inline isTimerRunning (handler: bool option -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.isTimerRunning() |> handler ]
+        static member inline isTimerRunning (handler: bool option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.isTimerRunning() |> handler |> dispatch ]
 
         /// Increase timer. Returns number of milliseconds of an updated timer.
         /// If `timer` parameter isn't set, returns None.
-        static member inline increaseTimer (ms: int, handler: int option -> unit) : Cmd<_> =
-            [ fun _ -> Bindings.swal.increaseTimer ms |> handler ]
+        static member inline increaseTimer (ms: int, handler: int option -> 'Msg option) : Cmd<_> =
+            [ fun dispatch -> Bindings.swal.increaseTimer ms |> handler |> dispatch ]
 
         /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
         static member inline queue (steps: ISwalProperty list list) : Cmd<_> = 
@@ -159,29 +183,31 @@ module Cmd =
             |> List.singleton
 
         /// Gets the index of current modal in queue. When there's no active queue, None will be returned.
-        static member inline getQueueStep (handler: string option -> unit) : Cmd<_> = 
-            [ fun _ -> Bindings.swal.getQueueStep() |> handler ]
+        static member inline getQueueStep (handler: string option -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.getQueueStep() |> handler |> dispatch ]
 
         /// Inserts a modal in the queue.
-        static member inline insertQueueStep (step: ISwalProperty list, handler: int -> unit) : Cmd<_> = 
-            [ fun _ -> Bindings.swal.insertQueueStep (createObj !!step) |> handler ]
+        static member inline insertQueueStep (step: ISwalProperty list, handler: int -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.insertQueueStep (createObj !!step) |> handler |> dispatch ]
 
         /// Inserts a modal in the queue.
-        static member inline insertQueueStep (step: ISwalProperty list, index: int, handler: int -> unit) : Cmd<_> = 
-            [ fun _ -> Bindings.swal.insertQueueStep ((createObj !!step), index) |> handler ]
+        static member inline insertQueueStep (step: ISwalProperty list, index: int, handler: int -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.insertQueueStep ((createObj !!step), index) |> handler |> dispatch ]
 
         /// Deletes the modal at the specified index in the queue.
         static member inline deleteQueueStep (index: int) : Cmd<_> = [ fun _ -> Bindings.swal.deleteQueueStep index ]
 
         /// Determines if a given parameter name is valid.
-        static member inline isValidParameter (paramName: string, handler: bool -> unit) : Cmd<_> = [ fun _ -> Bindings.swal.isValidParameter paramName |> handler ]
+        static member inline isValidParameter (paramName: string, handler: bool -> 'Msg option) : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.isValidParameter paramName |> handler |> dispatch ]
 
         /// Determines if a given parameter name is valid for Swal.update() method.
-        static member inline isUpdatableParameter (paramName: string, handler: bool -> unit)  : Cmd<_> = 
-            [ fun _ -> Bindings.swal.isUpdatableParameter paramName |> handler ]
+        static member inline isUpdatableParameter (paramName: string, handler: bool -> 'Msg option)  : Cmd<_> = 
+            [ fun dispatch -> Bindings.swal.isUpdatableParameter paramName |> handler |> dispatch ]
 
         /// SweetAlert2's version
-        static member inline version (handler: string -> unit)  = [ fun _ -> Bindings.swal.version |> handler ]
+        static member inline version (handler: string -> 'Msg option) = 
+            [ fun dispatch -> Bindings.swal.version |> handler |> dispatch ]
     
     module Swal =
         [<Erase>]
