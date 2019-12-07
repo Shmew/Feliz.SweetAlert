@@ -164,6 +164,16 @@ module Cmd =
             [ fun dispatch -> Bindings.swal.increaseTimer ms |> handler |> dispatch ]
 
         /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
+        static member inline queue (steps: ISwalProperty list) : Cmd<_> = 
+            fun _ ->
+                [ steps ]
+                |> List.map (fun props -> (createObj !!props) |> U2.Case1) 
+                |> ResizeArray 
+                |> Bindings.swal.queue 
+                |> Promise.start
+            |> List.singleton
+
+        /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
         static member inline queue (steps: ISwalProperty list list) : Cmd<_> = 
             fun _ ->
                 steps 

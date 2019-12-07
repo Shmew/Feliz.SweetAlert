@@ -42,11 +42,11 @@ let render = React.functionComponent (fun () ->
                 prop.classes [ Bulma.Button; Bulma.HasBackgroundPrimary; Bulma.HasTextWhite; Bulma.IsLarge ]
                 prop.onClick <| fun _ -> 
                     Swal.queue [
-                        [ swal.title "Your public IP"
-                          swal.confirmButtonText "Show my public IP"
-                          swal.text "Your IP will be fetched via Fable.SimpleHttp!"
-                          swal.showLoaderOnConfirm true
-                          swal.preConfirm<obj,JS.Promise<int>> getIp ]
+                        swal.title "Your public IP"
+                        swal.confirmButtonText "Show my public IP"
+                        swal.text "Your IP will be fetched via Fable.SimpleHttp!"
+                        swal.showLoaderOnConfirm true
+                        swal.preConfirm<obj,JS.Promise<int>> getIp 
                     ]
                 prop.text "Fire!"
             ]

@@ -133,6 +133,14 @@ type Swal =
     static member inline increaseTimer (ms: int) = Bindings.swal.increaseTimer ms
 
     /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
+    static member inline queue (steps: ISwalProperty list) = 
+        [ steps ]
+        |> List.map (fun props -> (createObj !!props) |> U2.Case1) 
+        |> ResizeArray 
+        |> Bindings.swal.queue 
+        |> Promise.start
+
+    /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
     static member inline queue (steps: ISwalProperty list list) = 
         steps 
         |> List.map (fun props -> (createObj !!props) |> U2.Case1) 

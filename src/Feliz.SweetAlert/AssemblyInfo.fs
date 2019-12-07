@@ -6,8 +6,8 @@ open System.Runtime.CompilerServices
 [<assembly: AssemblyTitleAttribute("Feliz.SweetAlert")>]
 [<assembly: AssemblyProductAttribute("Feliz.SweetAlert")>]
 [<assembly: AssemblyDescriptionAttribute("Fable bindings written in the Feliz-style for sweetalert2")>]
-[<assembly: AssemblyVersionAttribute("0.2.1")>]
-[<assembly: AssemblyFileVersionAttribute("0.2.1")>]
+[<assembly: AssemblyVersionAttribute("0.2.2")>]
+[<assembly: AssemblyFileVersionAttribute("0.2.2")>]
 [<assembly: AssemblyConfigurationAttribute("Release")>]
 [<assembly: InternalsVisibleToAttribute("Feliz.SweetAlert.Tests")>]
 do ()
@@ -16,7 +16,7 @@ module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "Feliz.SweetAlert"
     let [<Literal>] AssemblyProduct = "Feliz.SweetAlert"
     let [<Literal>] AssemblyDescription = "Fable bindings written in the Feliz-style for sweetalert2"
-    let [<Literal>] AssemblyVersion = "0.2.1"
-    let [<Literal>] AssemblyFileVersion = "0.2.1"
+    let [<Literal>] AssemblyVersion = "0.2.2"
+    let [<Literal>] AssemblyFileVersion = "0.2.2"
     let [<Literal>] AssemblyConfiguration = "Release"
     let [<Literal>] InternalsVisibleTo = "Feliz.SweetAlert.Tests"

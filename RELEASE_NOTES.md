@@ -1,3 +1,6 @@
+### 0.2.2 - Saturday, December 7, 2019
+* Add singleton queue overload
+
 ### 0.2.1 - Thursday, December 5, 2019
 * Fix femto settings
 
