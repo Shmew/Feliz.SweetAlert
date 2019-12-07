@@ -217,3 +217,8 @@ module Bindings =
                     | DismissReason.Esc -> Internal.IDismissReason.Esc
                     | DismissReason.Timer -> Internal.IDismissReason.Timer
                     |> Some
+
+    let elmishMsgHandler (result: 'Msg option) =
+        match result with
+        | Some msg -> Elmish.Cmd.ofMsg msg
+        | None -> Elmish.Cmd.none

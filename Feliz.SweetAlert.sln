@@ -81,6 +81,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simple", "Simple", "{4F9E0A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elmish", "Elmish", "{8235D433-804C-4A66-84E8-530012F67B1C}"
 	ProjectSection(SolutionItems) = preProject
+		public\SweetAlert\Examples\Elmish\DynamicQueue.md = public\SweetAlert\Examples\Elmish\DynamicQueue.md
 		public\SweetAlert\Examples\Elmish\ReactAndHandler.md = public\SweetAlert\Examples\Elmish\ReactAndHandler.md
 		public\SweetAlert\Examples\Elmish\Simple.md = public\SweetAlert\Examples\Elmish\Simple.md
 	EndProjectSection

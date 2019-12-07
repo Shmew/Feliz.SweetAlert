@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Include="SweetAlert\Examples\Elmish\Simple.fs" />
     <Compile Include="SweetAlert\Examples\Elmish\ReactAndHandler.fs" />
+    <Compile Include="SweetAlert\Examples\Elmish\DynamicQueue.fs" />
     <Compile Include="SweetAlert\Examples\Simple\Basic.fs" />
     <Compile Include="SweetAlert\Examples\Simple\WithTitles.fs" />
     <Compile Include="SweetAlert\Examples\Simple\WithHandlers.fs" />

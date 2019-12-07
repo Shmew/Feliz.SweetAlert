@@ -141,6 +141,14 @@ type Swal =
         |> Promise.start
 
     /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
+    static member inline queue (steps: ISwalProperty list, handler: (SweetAlertResult<'T> -> unit)) = 
+        [ steps ]
+        |> List.map (fun props -> (createObj !!props) |> U2.Case1) 
+        |> ResizeArray 
+        |> Bindings.swal.queue 
+        |> Bindings.fireWrapperIgnore handler
+
+    /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
     static member inline queue (steps: ISwalProperty list list) = 
         steps 
         |> List.map (fun props -> (createObj !!props) |> U2.Case1) 

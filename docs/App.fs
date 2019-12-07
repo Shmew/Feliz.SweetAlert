@@ -68,7 +68,8 @@ let centeredSpinner =
 let samples = 
     let elmishSamples =
         [ "swal-elmish-simple", Samples.Elmish.Simple.render()
-          "swal-elmish-reactandhandler", Samples.Elmish.ReactAndHandler.render() ]
+          "swal-elmish-reactandhandler", Samples.Elmish.ReactAndHandler.render()
+          "swal-elmish-dynamicqueue", Samples.Elmish.DynamicQueue.render() ]
 
     let simpleSamples =
         [ "swal-simple-basic", Samples.Simple.Basic.render()
@@ -303,6 +304,7 @@ let sidebar (state: State) dispatch =
                     nestedMenuList "Elmish" [ Urls.SweetAlert; Urls.Examples; Urls.Elmish ] [
                         nestedMenuItem "Simple" [ Urls.Simple ]
                         nestedMenuItem "React and Handling" [ Urls.ReactAndHandler ]
+                        nestedMenuItem "Dynamic Queue" [ Urls.DynamicQueue ]
                     ]
                     nestedMenuList "Simple" [ Urls.SweetAlert; Urls.Examples; Urls.Simple ] [
                         nestedMenuItem "Basic" [ Urls.Basic ]
@@ -335,6 +337,7 @@ let elmishExamples (currentPath: string list) =
     match currentPath with
     | [ Urls.Simple ] -> [ "Simple.md" ]
     | [ Urls.ReactAndHandler ] -> [ "ReactAndHandler.md" ]
+    | [ Urls.DynamicQueue ] -> [ "DynamicQueue.md" ]
     | _ -> [ ]
     |> fun path ->
         if path |> List.isEmpty then []

@@ -1,3 +1,7 @@
+### 0.3.0 - Saturday, December 7, 2019
+* Fix elmish cmd handling
+* Add additional overloads
+
 ### 0.2.2 - Saturday, December 7, 2019
 * Add singleton queue overload
 
