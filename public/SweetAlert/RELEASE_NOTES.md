@@ -1,3 +1,6 @@
+### 0.4.0 - Saturday, December 7, 2019
+* Fix casing of some props
+
 ### 0.3.0 - Saturday, December 7, 2019
 * Fix elmish cmd handling
 * Add additional overloads

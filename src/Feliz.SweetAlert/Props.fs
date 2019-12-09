@@ -25,7 +25,7 @@ type hideClass =
     static member inline icon (value: string list) = Interop.mkSwalHideClassAttr "icon" (value |> String.concat " ")
 
 [<Erase>]
-type CustomClass =
+type customClass =
     static member inline container (value: string) = Interop.mkSwalCustomClassAttr "container" value
     static member inline container (value: string list) = Interop.mkSwalCustomClassAttr "container" (value |> String.concat " ")
     static member inline popup (value: string) = Interop.mkSwalCustomClassAttr "popup" value
