@@ -1,3 +1,7 @@
+### 0.5.0 - Thursday, Feburary 20, 2020
+* Updated for sweetalert2 version 9.7.2
+* Updated for sweetalert2-react-content version 3.0.0
+
 ### 0.4.0 - Saturday, December 7, 2019
 * Fix casing of some props
 

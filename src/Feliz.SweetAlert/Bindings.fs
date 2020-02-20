@@ -72,6 +72,8 @@ module Bindings =
             abstract getPopup: unit -> HTMLElement
             /// Gets the modal title.
             abstract getTitle: unit -> HTMLElement
+            /// Gets the popup header.
+            abstract getHeader: unit -> HTMLElement
             /// Gets progress steps.
             abstract getProgressSteps: unit -> HTMLElement
             /// Gets the modal content.

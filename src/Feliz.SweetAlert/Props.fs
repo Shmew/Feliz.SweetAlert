@@ -451,11 +451,14 @@ type swal =
     /// If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
     static member inline onRender (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onRender" handler
 
-    /// Function to run when modal closes, provides modal DOM element.
+    /// Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
     static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onClose" handler
 
-    /// Function to run after modal has been disposed.
-    static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalAttr "onAfterClose" handler    
+    /// Function to run after popup has been disposed by user interaction (and not by another popup).
+    static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalAttr "onAfterClose" handler
+
+    /// Function to run after popup has been destroyed either by user interaction or by another popup.
+    static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalAttr "onDestroy" handler
 
 module swal = 
     [<Erase>]

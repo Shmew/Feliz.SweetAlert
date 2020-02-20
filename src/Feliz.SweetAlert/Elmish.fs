@@ -40,6 +40,10 @@ module Cmd =
         static member inline getTitle (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
             Bindings.swal.getTitle() |> handler |> Bindings.elmishMsgHandler
 
+        /// Gets the popup header.
+        static member inline getHeader (handler: HTMLElement -> 'Msg option) : Cmd<_> =
+            Bindings.swal.getHeader() |> handler |> Bindings.elmishMsgHandler
+
         /// Gets progress steps.
         static member inline getProgressSteps (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
             Bindings.swal.getProgressSteps() |> handler |> Bindings.elmishMsgHandler
