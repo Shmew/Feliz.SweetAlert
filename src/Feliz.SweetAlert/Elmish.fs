@@ -89,6 +89,10 @@ module Cmd =
         static member inline getFooter (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
             Bindings.swal.getFooter() |> handler |> Bindings.elmishMsgHandler
 
+        /// Gets the timer progress bar.
+        static member inline getTimerProgressBar (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+            Bindings.swal.getFooter() |> handler |> Bindings.elmishMsgHandler
+
         /// Gets all focusable elements in the popup.
         static member inline getFocusableElements (handler: HTMLElement list -> 'Msg option) : Cmd<_> = 
             Bindings.swal.getFocusableElements() |> List.ofSeq |> handler |> Bindings.elmishMsgHandler

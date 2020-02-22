@@ -65,6 +65,9 @@ type Swal =
     /// Gets the modal footer.
     static member inline getFooter () = Bindings.swal.getFooter()
 
+    /// Gets the timer progress bar.
+    static member inline getTimerProgressBar () = Bindings.swal.getTimerProgressBar()
+
     /// Gets all focusable elements in the popup.
     static member inline getFocusableElements () = Bindings.swal.getFocusableElements()
 

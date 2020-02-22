@@ -97,6 +97,8 @@ module Bindings =
             abstract getActions: unit -> HTMLElement
             /// Gets the modal footer.
             abstract getFooter: unit -> HTMLElement
+            /// Gets the timer progress bar.
+            abstract getTimerProgressBar: unit -> HTMLElement
             /// Gets all focusable elements in the popup.
             abstract getFocusableElements: unit -> ResizeArray<HTMLElement>
             /// Enables "Confirm" and "Cancel" buttons.
