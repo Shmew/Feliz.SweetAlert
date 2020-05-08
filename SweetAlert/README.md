@@ -4,7 +4,7 @@ Fable bindings for [sweetalert2](https://github.com/sweetalert2/sweetalert2) and
 
 Implemented as both normal functions and Elmish commands, for maximum flexibility.
 
-See the full documentation with live examples: [https://shmew.github.io/Feliz.SweetAlert](https://shmew.github.io/Feliz.SweetAlert/)
+See the full documentation with live examples [here](https://shmew.github.io/Feliz.SweetAlert/).
 
 A quick look:
 
