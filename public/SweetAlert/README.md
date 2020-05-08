@@ -1,4 +1,4 @@
-# Feliz.SweetAlert (alpha) [![Nuget](https://img.shields.io/nuget/v/Feliz.SweetAlert.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.SweetAlert)
+# Feliz.SweetAlert [![Nuget](https://img.shields.io/nuget/v/Feliz.SweetAlert.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.SweetAlert)
 
 Fable bindings for [sweetalert2](https://github.com/sweetalert2/sweetalert2) and [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) with [Feliz](https://github.com/Zaid-Ajaj/Feliz) style api for use within React applications.
 
