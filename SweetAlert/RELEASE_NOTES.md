@@ -1,3 +1,6 @@
+### 0.6.1 - Saturday, February 22, 2020
+* Update dependencies
+
 ### 0.6.0 - Saturday, February 22, 2020
 * Updated for sweetalert2 version 9.8.2
 
