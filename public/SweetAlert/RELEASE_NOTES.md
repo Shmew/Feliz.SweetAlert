@@ -1,3 +1,6 @@
+### 1.0.0 - Wednesday, May 20, 2020
+* Stable release
+
 ### 0.6.1 - Saturday, February 22, 2020
 * Update dependencies
 
