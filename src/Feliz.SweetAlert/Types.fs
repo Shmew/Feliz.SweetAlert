@@ -33,6 +33,9 @@ module SweetAlertResult =
     let inline ofDismiss (handler: DismissReason -> unit) (input: SweetAlertResult<'T>) =
         either (fun _ -> ()) handler input
 
+type IObservableLike<'T> =
+    abstract toPromise: unit -> JS.Promise<'T>
+
 [<AutoOpen;EditorBrowsable(EditorBrowsableState.Never);Erase>]
 module Types =
     type ISwalProperty = interface end

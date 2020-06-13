@@ -1,6 +1,6 @@
 {
   "name": "feliz.-sweet-alert",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fable bindings written in the Feliz-style for sweetalert2",
   "homepage": "https://github.com/Shmew/Feliz.SweetAlert",
   "bugs": {

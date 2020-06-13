@@ -128,7 +128,7 @@ module Cmd =
         static member inline resetValidationMessage() : Cmd<_> = [ fun _ -> Bindings.swal.resetValidationMessage() ]
 
         /// Gets the input DOM node, this method works with input parameter.
-        static member inline getInput (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+        static member inline getInput (handler: HTMLInputElement option -> 'Msg option) : Cmd<_> = 
             Bindings.swal.getInput() |> handler |> Bindings.elmishMsgHandler
 
         /// Disables the modal input. A disabled input element is unusable and un-clickable.

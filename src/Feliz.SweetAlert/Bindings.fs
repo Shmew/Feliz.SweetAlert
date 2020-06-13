@@ -122,7 +122,7 @@ module Bindings =
             /// Hides validation message.
             abstract resetValidationMessage: unit -> unit
             /// Gets the input DOM node, this method works with input parameter.
-            abstract getInput: unit -> HTMLInputElement
+            abstract getInput: unit -> HTMLInputElement option
             /// Disables the modal input. A disabled input element is unusable and un-clickable.
             abstract disableInput: unit -> unit
             /// Enables the modal input.

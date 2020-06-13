@@ -297,6 +297,13 @@ type swal =
     /// - None to keep the default result.value
     static member inline preConfirm (handler: 'TInput -> JS.Promise<'TOutput>) = Interop.mkSwalAttr "preConfirm" handler
 
+    /// Function to execute before confirm.
+    /// Returned (or resolved) value can be:
+    /// - false to prevent a popup from closing
+    /// - anything else to pass that value as the result.value of Swal.fire()
+    /// - None to keep the default result.value
+    static member inline preConfirm (handler: 'TInput -> IObservableLike<'TOutput>) = Interop.mkSwalAttr "preConfirm" handler
+
     /// Add a customized icon for the modal. Should contain a string with the path or URL to the image.
     static member inline imageUrl (value: string) = Interop.mkSwalAttr "imageUrl" value
 
@@ -337,6 +344,13 @@ type swal =
     /// If the input type is checkbox, inputValue will represent the checked state.
     ///
     /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
+    static member inline inputValue (value: IObservableLike<string>) = Interop.mkSwalAttr "inputValue" value
+
+    /// Input field initial value.
+    ///
+    /// If the input type is checkbox, inputValue will represent the checked state.
+    ///
+    /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
     static member inline inputValue (value: float) = Interop.mkSwalAttr "inputValue" value
 
     /// Input field initial value.
@@ -351,6 +365,13 @@ type swal =
     /// If the input type is checkbox, inputValue will represent the checked state.
     ///
     /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
+    static member inline inputValue (value: IObservableLike<float>) = Interop.mkSwalAttr "inputValue" value
+
+    /// Input field initial value.
+    ///
+    /// If the input type is checkbox, inputValue will represent the checked state.
+    ///
+    /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
     static member inline inputValue (value: int) = Interop.mkSwalAttr "inputValue" value
 
     /// Input field initial value.
@@ -359,6 +380,14 @@ type swal =
     ///
     /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
     static member inline inputValue (value: JS.Promise<int>) = Interop.mkSwalAttr "inputValue" value
+
+    /// Input field initial value.
+    ///
+    /// If the input type is checkbox, inputValue will represent the checked state.
+    ///
+    /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
+    static member inline inputValue (value: IObservableLike<int>) = Interop.mkSwalAttr "inputValue" value
+
 
     /// If input parameter is set to "select" or "radio", you can provide options. 
     /// Can be a list or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
@@ -378,6 +407,10 @@ type swal =
     /// If input parameter is set to "select" or "radio", you can provide options. 
     /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
     static member inline inputOptions (value: JS.Promise<obj>) = Interop.mkSwalAttr "inputOptions" value
+
+    /// If input parameter is set to "select" or "radio", you can provide options. 
+    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
+    static member inline inputOptions (value: IObservableLike<obj>) = Interop.mkSwalAttr "inputOptions" value
 
     /// Automatically remove whitespaces from both ends of a result string. Set this parameter to false to disable auto-trimming.
     static member inline inputAutoTrim (value: bool) = Interop.mkSwalAttr "inputAutoTrim" value
@@ -401,6 +434,10 @@ type swal =
     ///
     /// Note that the result is if errors occured (e.g. None if validation was correct, or Error "You did it wrong!")
     static member inline inputValidator (handler: string option -> JS.Promise<string option>) = Interop.mkSwalAttr "inputValidator" handler
+    /// Validator for input field
+    ///
+    /// Note that the result is if errors occured (e.g. None if validation was correct, or Error "You did it wrong!")
+    static member inline inputValidator (handler: string option -> IObservableLike<string option>) = Interop.mkSwalAttr "inputValidator" handler
 
     /// A custom validation message for default validators (email, url).
     static member inline validationMessage (value: string) = Interop.mkSwalAttr "validationMessage" value
@@ -437,7 +474,6 @@ type swal =
 
     /// Function to run after popup has been destroyed either by user interaction or by another popup.
     static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalAttr "onDestroy" handler
-
 
 [<Erase;RequireQualifiedAccess>]
 module swal = 
