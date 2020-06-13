@@ -188,6 +188,7 @@ type Swal =
     /// SweetAlert2's version
     static member inline version () = Bindings.swal.version
 
+[<Erase>]
 module Swal =
     [<Erase>]
     type Simple =

@@ -1,6 +1,8 @@
 namespace Feliz.SweetAlert
 
-[<RequireQualifiedAccess>]
+open Fable.Core
+
+[<Erase;RequireQualifiedAccess>]
 module Interop =
     let inline mkSwalAttr (key: string) (value: obj) : ISwalProperty = unbox (key, value)
     let inline mkSwalCustomClassAttr (key: string) (value: obj) : ISwalCustomClassProperty = unbox (key, value)

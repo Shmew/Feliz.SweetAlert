@@ -28,7 +28,8 @@ module Bindings =
             | Esc
             | Timer
 
-        type [<AllowNullLiteral>] ISweetAlertResult =
+        [<AllowNullLiteral>]
+        type ISweetAlertResult =
             abstract value: 'T option with get, set
             abstract dismiss: IDismissReason option with get, set
 

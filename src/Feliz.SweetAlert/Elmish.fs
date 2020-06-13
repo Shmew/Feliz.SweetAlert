@@ -4,6 +4,7 @@ open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 
+[<Erase>]
 module Cmd =
     open Elmish
 
@@ -240,6 +241,7 @@ module Cmd =
         static member inline version (handler: string -> 'Msg option) = 
             Bindings.swal.version |> handler |> Bindings.elmishMsgHandler
     
+    [<Erase>]
     module Swal =
         [<Erase>]
         type Simple =

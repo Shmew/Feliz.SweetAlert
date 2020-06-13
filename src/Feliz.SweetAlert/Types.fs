@@ -1,7 +1,9 @@
 namespace Feliz.SweetAlert
 
+open Fable.Core
 open System.ComponentModel
 
+[<StringEnum>]
 type DismissReason =
     /// The user clicked the backdrop.
     | Backdrop
@@ -18,22 +20,20 @@ type SweetAlertResult<'T> =
     | ResultValue of 'T
     | DismissReason of DismissReason
     
+[<Erase;RequireQualifiedAccess>]
 module SweetAlertResult =
-    let either (ofValue: 'T -> unit) (ofDismiss: DismissReason -> unit) (input: SweetAlertResult<'T>) =
-#if DEBUG
-        Fable.Core.JS.console.log input
-#endif
+    let inline either (ofValue: 'T -> unit) (ofDismiss: DismissReason -> unit) (input: SweetAlertResult<'T>) =
         match input with
         | ResultValue res -> ofValue res
         | DismissReason dr -> ofDismiss dr
 
-    let ofValue (handler: 'T -> unit) (input: SweetAlertResult<'T>) =
+    let inline ofValue (handler: 'T -> unit) (input: SweetAlertResult<'T>) =
         either handler (fun _ -> ()) input
 
-    let ofDismiss (handler: DismissReason -> unit) (input: SweetAlertResult<'T>) =
+    let inline ofDismiss (handler: DismissReason -> unit) (input: SweetAlertResult<'T>) =
         either (fun _ -> ()) handler input
 
-[<AutoOpen;EditorBrowsable(EditorBrowsableState.Never)>]
+[<AutoOpen;EditorBrowsable(EditorBrowsableState.Never);Erase>]
 module Types =
     type ISwalProperty = interface end
     type ISwalCustomClassProperty = interface end

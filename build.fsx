@@ -69,7 +69,6 @@ let bin        = __SOURCE_DIRECTORY__ @@ "bin"
 let temp       = __SOURCE_DIRECTORY__ @@ "temp"
 let objFolder  = __SOURCE_DIRECTORY__ @@ "obj"
 let pub        = __SOURCE_DIRECTORY__ @@ "public"
-let genGlob    = __SOURCE_DIRECTORY__ @@ "src/**/*.Generator.*.fsproj"
 let libGlob    = __SOURCE_DIRECTORY__ @@ "src/**/*.fsproj"
 
 let foldExcludeGlobs (g: IGlobbingPattern) (d: string) = g -- d
@@ -167,7 +166,6 @@ Target.create "AssemblyInfo" <| fun _ ->
 
 Target.create "CopyBinaries" <| fun _ ->
     !! libGlob
-    -- genGlob
     -- (__SOURCE_DIRECTORY__ @@ "src/**/*.shproj")
     |> Seq.map (fun f -> ((Path.getDirectory f) @@ "bin" @@ configuration(), "bin" @@ (Path.GetFileNameWithoutExtension f)))
     |> Seq.iter (fun (fromDir, toDir) -> Shell.copyDir toDir fromDir (fun _ -> true))
@@ -264,7 +262,6 @@ Target.create "Build" <| fun _ ->
     restoreSolution()
 
     !! libGlob
-    -- genGlob
     |> List.ofSeq
     |> List.iter (MSBuild.build setParams)
 
@@ -290,7 +287,6 @@ Target.create "PublishDotNet" <| fun _ ->
         MSBuild.build setParams project
 
     !! libGlob
-    -- genGlob
     |> Seq.map
         ((fun f -> (((Path.getDirectory f) @@ "bin" @@ configuration()), f) )
         >>

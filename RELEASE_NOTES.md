@@ -1,3 +1,7 @@
+### 1.1.0 - Saturday, June 13, 2020
+* Update for sweetalert 9.14.4
+* Improve bundle sizing.
+
 ### 1.0.0 - Wednesday, May 20, 2020
 * Stable release
 

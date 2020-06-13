@@ -361,38 +361,16 @@ type swal =
     static member inline inputValue (value: JS.Promise<int>) = Interop.mkSwalAttr "inputValue" value
 
     /// If input parameter is set to "select" or "radio", you can provide options. 
-    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
-    static member inline inputOptions (value: seq<'K * 'V>) = Interop.mkSwalAttr "inputOptions" (createObj !!value)
-
-    /// If input parameter is set to "select" or "radio", you can provide options. 
-    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
+    /// Can be a list or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
     static member inline inputOptions (value: ('K * 'V) list) = Interop.mkSwalAttr "inputOptions" (createObj !!value)
 
     /// If input parameter is set to "select" or "radio", you can provide options. 
     /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
-    static member inline inputOptions (value: ('K * 'V) []) = Interop.mkSwalAttr "inputOptions" (createObj !!value)
-
-    /// If input parameter is set to "select" or "radio", you can provide options. 
-    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
     static member inline inputOptions (value: obj) = Interop.mkSwalAttr "inputOptions" value
-
-    /// If input parameter is set to "select" or "radio", you can provide options. 
-    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
-    static member inline inputOptions (value: JS.Promise<seq<'K * 'V>>) = 
-        value
-        |> Promise.map (fun res -> createObj !!res)
-        |> Interop.mkSwalAttr "inputOptions"
     
     /// If input parameter is set to "select" or "radio", you can provide options. 
     /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
     static member inline inputOptions (value: JS.Promise<('K * 'V) list>) = 
-        value
-        |> Promise.map (fun res -> createObj !!res)
-        |> Interop.mkSwalAttr "inputOptions"
-    
-    /// If input parameter is set to "select" or "radio", you can provide options. 
-    /// Can be a Map or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
-    static member inline inputOptions (value: JS.Promise<('K * 'V) []>) = 
         value
         |> Promise.map (fun res -> createObj !!res)
         |> Interop.mkSwalAttr "inputOptions"
@@ -460,6 +438,8 @@ type swal =
     /// Function to run after popup has been destroyed either by user interaction or by another popup.
     static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalAttr "onDestroy" handler
 
+
+[<Erase;RequireQualifiedAccess>]
 module swal = 
     [<Erase>]
     type icon =
