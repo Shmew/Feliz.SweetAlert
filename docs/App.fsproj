@@ -19,10 +19,6 @@
     <Compile Include="SweetAlert\Examples\Image.fs" />
     <Compile Include="SweetAlert\Examples\CloseTimer.fs" />
     <Compile Include="SweetAlert\Examples\DynamicQueue.fs" />
-    <Compile Include="..\paket-files\docs\Zaid-Ajaj\Feliz\Feliz.Markdown\Markdown.fs">
-      <Paket>True</Paket>
-      <Link>Feliz.Markdown/Markdown.fs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Urls.fs" />

@@ -1,3 +1,6 @@
+### 1.3.0 - Tuesday, July 14, 2020
+* Update for sweetalert 9.17.0
+
 ### 1.2.0 - Saturday, June 13, 2020
 * Update for sweetalert 9.15.0
 

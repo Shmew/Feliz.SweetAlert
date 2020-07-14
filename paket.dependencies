@@ -1,6 +1,7 @@
-version 5.241.2
+version 5.247.4
 
 framework: auto-detect
+generate_load_scripts: true
 
 group SweetAlert
 	source https://nuget.org/api/v2
@@ -23,12 +24,11 @@ group Docs
     nuget Fable.SimpleHttp ~> 2
     nuget Fable.SimpleJson ~> 3
     nuget Feliz ~> 1
-    nuget Feliz.ElmishComponents ~> 0
+    nuget Feliz.ElmishComponents ~> 1
+    nuget Feliz.Markdown ~> 1
     nuget Feliz.Router ~> 1
     nuget FSharp.Core ~> 4.7 lowest_matching: true
     nuget Zanaptak.TypedCssClasses ~> 0
-
-    github Zaid-Ajaj/Feliz Feliz.Markdown/Markdown.fs
 
 group Tooling
 	source https://nuget.org/api/v2
@@ -39,9 +39,6 @@ group Tooling
     nuget FSharp.Json ~> 0
 	nuget FSharpLint.Core ~> 0
     nuget Yarnpkg.Yarn ~> 1
-
-	clitool dotnet-fable ~> 2
-	clitool dotnet-fake ~> 5
 
 group FakeBuild
 	source https://api.nuget.org/v3/index.json

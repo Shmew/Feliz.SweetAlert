@@ -39,7 +39,7 @@ type IObservableLike<'T> =
 [<AutoOpen;EditorBrowsable(EditorBrowsableState.Never);Erase>]
 module Types =
     type ISwalProperty = interface end
+    type ISwalUpdatableProperty = inherit ISwalProperty
     type ISwalCustomClassProperty = interface end
     type ISwalHideClassProperty = interface end
     type ISwalShowClassProperty = interface end
-    
