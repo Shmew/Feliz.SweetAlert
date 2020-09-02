@@ -272,6 +272,9 @@ type swal =
     /// Use this to change the content of the close button.
     static member inline closeButtonHtml (value: string) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
 
+    /// Use this to change the content of the close button.
+    static member inline closeButtonHtml (value: ReactElement) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
+
     /// Use this to change the aria-label for the close button.
     static member inline closeButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "closeButtonAriaLabel" value
 
