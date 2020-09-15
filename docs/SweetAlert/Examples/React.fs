@@ -44,14 +44,24 @@ let confirmButtonComp = React.functionComponent (fun () ->
         ]
     ])
 
-let cancelButtonComp = React.functionComponent ( fun () ->
+let denyButtonComp = React.functionComponent (fun () ->
     React.fragment [
         Html.p [
             prop.classes [ FA.Fa; FA.FaThumbsDown ]
     
         ]
         Html.p [
-            prop.text "Not so great."
+            prop.text "Hate it!"
+        ]
+    ])
+
+let cancelButtonComp = React.functionComponent ( fun () ->
+    React.fragment [
+        Html.p [
+            prop.classes [ FA.Fa; FA.FaMehO ]
+        ]
+        Html.p [
+            prop.text "So-so"
         ]
     ])
 
@@ -69,14 +79,16 @@ let render = React.functionComponent (fun () ->
                 prop.classes [ Bulma.Button; Bulma.HasBackgroundPrimary; Bulma.HasTextWhite; Bulma.IsLarge ]
                 prop.onClick <| fun _ ->
                     Swal.fire [
-                        swal.title (titleComp {| text = "Look at this title!" |})
+                        swal.title (titleComp {| text = "What do you think?" |})
                         swal.icon.info
                         swal.html (bodyComp {| link = url |})
                         swal.showCloseButton true
                         swal.showCancelButton true
-                        swal.focusConfirm false
+                        swal.showDenyButton true
+                        swal.focusConfirm true
                         swal.confirmButtonText (confirmButtonComp())
                         swal.cancelButtonText (cancelButtonComp())
+                        swal.denyButtonText (denyButtonComp())
                     ]
                 prop.text "Fire!"
             ]

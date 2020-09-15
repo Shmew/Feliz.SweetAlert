@@ -16,22 +16,30 @@ type DismissReason =
     /// The timer ran out, and the alert closed automatically.
     | Timer
 
-type SweetAlertResult<'T> =
-    | ResultValue of 'T
-    | DismissReason of DismissReason
-    
-[<Erase;RequireQualifiedAccess>]
-module SweetAlertResult =
-    let inline either (ofValue: 'T -> unit) (ofDismiss: DismissReason -> unit) (input: SweetAlertResult<'T>) =
-        match input with
-        | ResultValue res -> ofValue res
-        | DismissReason dr -> ofDismiss dr
+[<RequireQualifiedAccess>]
+module SweetAlert =
+    [<RequireQualifiedAccess>]
+    type Result<'T> =
+        | Value of 'T
+        | Denied
+        | Dismissal of DismissReason
 
-    let inline ofValue (handler: 'T -> unit) (input: SweetAlertResult<'T>) =
-        either handler (fun _ -> ()) input
+    [<Erase;RequireQualifiedAccess>]
+    module Result =
+        let inline any (ofValue: 'T -> unit) (ofDenied: unit -> unit) (ofDismissal: DismissReason -> unit) (input: Result<'T>) =
+            match input with
+            | Result.Value res -> ofValue res
+            | Result.Denied -> ofDenied()
+            | Result.Dismissal dr -> ofDismissal dr
 
-    let inline ofDismiss (handler: DismissReason -> unit) (input: SweetAlertResult<'T>) =
-        either (fun _ -> ()) handler input
+        let inline ofValue (handler: 'T -> unit) (input: Result<'T>) =
+            any handler ignore ignore input
+
+        let inline ofDenied (handler: unit -> unit) (input: Result<'T>) =
+            any ignore handler ignore input
+
+        let inline ofDismissal (handler: DismissReason -> unit) (input: Result<'T>) =
+            any ignore ignore handler input
 
 type IObservableLike<'T> =
     abstract toPromise: unit -> JS.Promise<'T>

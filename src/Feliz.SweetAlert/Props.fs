@@ -48,6 +48,8 @@ type customClass =
     static member inline actions (value: string list) = Interop.mkSwalCustomClassAttr "actions" (value |> String.concat " ")
     static member inline confirmButton (value: string) = Interop.mkSwalCustomClassAttr "confirmButton" value
     static member inline confirmButton (value: string list) = Interop.mkSwalCustomClassAttr "confirmButton" (value |> String.concat " ")
+    static member inline denyButton (value: string) = Interop.mkSwalCustomClassAttr "denyButton" value
+    static member inline denyButton (value: string list) = Interop.mkSwalCustomClassAttr "denyButton" (value |> String.concat " ")
     static member inline cancelButton (value: string) = Interop.mkSwalCustomClassAttr "cancelButton" value
     static member inline cancelButton (value: string list) = Interop.mkSwalCustomClassAttr "cancelButton" (value |> String.concat " ")
     static member inline footer (value: string) = Interop.mkSwalCustomClassAttr "footer" value
@@ -56,30 +58,30 @@ type customClass =
 [<Erase>]
 type swal =
     /// The title of the modal, as HTML.
-    static member inline title (value: string) = Interop.mkSwalUpdatableAttr "title" value
+    static member inline title (value: string) = Interop.mkSwalAttr "title" value
 
     /// The title of the modal, as HTML.
-    static member inline title (value: HTMLElement) = Interop.mkSwalUpdatableAttr "title" value
+    static member inline title (value: HTMLElement) = Interop.mkSwalAttr "title" value
 
     /// The title of the modal, as HTML.
-    static member inline title (value: ReactElement) = Interop.mkSwalUpdatableAttr "title" value
+    static member inline title (value: ReactElement) = Interop.mkSwalAttr "title" value
 
     /// The title of the modal, as text. Useful to avoid HTML injection.
-    static member inline titleText (value: string) = Interop.mkSwalUpdatableAttr "titleText" value
+    static member inline titleText (value: string) = Interop.mkSwalAttr "titleText" value
 
     /// A HTML description for the modal.
-    static member inline html (value: string) = Interop.mkSwalUpdatableAttr "html" value
+    static member inline html (value: string) = Interop.mkSwalAttr "html" value
 
     /// A HTML description for the modal.
-    static member inline html (value: HTMLElement) = Interop.mkSwalUpdatableAttr "html" value
+    static member inline html (value: HTMLElement) = Interop.mkSwalAttr "html" value
 
     /// A HTML description for the modal.
-    static member inline html (value: ReactElement) = Interop.mkSwalUpdatableAttr "html" value
+    static member inline html (value: ReactElement) = Interop.mkSwalAttr "html" value
 
     /// A description for the modal. 
     ///
     /// If "text" and "html" parameters are provided in the same time, "text" will be used.
-    static member inline text (value: string) = Interop.mkSwalUpdatableAttr "text" value
+    static member inline text (value: string) = Interop.mkSwalAttr "text" value
 
     /// The custom HTML content for an icon.
     static member inline iconHtml (value: string) = Interop.mkSwalAttr "iconHtml" value
@@ -91,19 +93,19 @@ type swal =
     static member inline showClass (value: ISwalShowClassProperty list) = Interop.mkSwalAttr "showClass" (createObj !!value)
 
     /// CSS classes for animations when hiding a popup (fade out)
-    static member inline hideClass (value: ISwalHideClassProperty) = Interop.mkSwalUpdatableAttr "hideClass" (createObj !![ value ])
+    static member inline hideClass (value: ISwalHideClassProperty) = Interop.mkSwalAttr "hideClass" (createObj !![ value ])
 
     /// CSS classes for animations when hiding a popup (fade out)
-    static member inline hideClass (value: ISwalHideClassProperty list) = Interop.mkSwalUpdatableAttr "hideClass" (createObj !!value)
+    static member inline hideClass (value: ISwalHideClassProperty list) = Interop.mkSwalAttr "hideClass" (createObj !!value)
 
     /// The footer of the modal.
-    static member inline footer (value: string) = Interop.mkSwalUpdatableAttr "footer" value
+    static member inline footer (value: string) = Interop.mkSwalAttr "footer" value
 
     /// The footer of the modal.
-    static member inline footer (value: HTMLElement) = Interop.mkSwalUpdatableAttr "footer" value
+    static member inline footer (value: HTMLElement) = Interop.mkSwalAttr "footer" value
 
     /// The footer of the modal.
-    static member inline footer (value: ReactElement) = Interop.mkSwalUpdatableAttr "footer" value
+    static member inline footer (value: ReactElement) = Interop.mkSwalAttr "footer" value
 
     /// Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop. Can be either a boolean or a string which will be assigned to the CSS background property.
     static member inline backdrop (value: bool) = Interop.mkSwalAttr "backdrop" value
@@ -155,18 +157,18 @@ type swal =
     /// Modal window background (CSS background property). 
     ///
     /// The default background is '#fff'.
-    static member inline background (value: IStyleAttribute) = Interop.mkSwalAttr "background" (Bindings.getKVV value)
+    static member inline background (value: #IStyleAttribute) = Interop.mkSwalAttr "background" (Helpers.getKVV value)
 
     /// Modal window background (CSS background property). 
     ///
     /// The default background is '#fff'.
-    static member inline background (value: IStyleAttribute list) = Interop.mkSwalAttr "background" (createObj !!(value |> List.map Bindings.getKVV))
+    static member inline background (value: IStyleAttribute list) = Interop.mkSwalAttr "background" (createObj !!(value |> List.map Helpers.getKVV))
 
     /// A custom CSS class for the modal.
-    static member inline customClass (value: ISwalCustomClassProperty) = Interop.mkSwalUpdatableAttr "customClass" (createObj !![ value ])
+    static member inline customClass (value: ISwalCustomClassProperty) = Interop.mkSwalAttr "customClass" (createObj !![ value ])
 
     /// A custom CSS class for the modal.
-    static member inline customClass (value: ISwalCustomClassProperty list) = Interop.mkSwalUpdatableAttr "customClass" (createObj !!value)
+    static member inline customClass (value: ISwalCustomClassProperty list) = Interop.mkSwalAttr "customClass" (createObj !!value)
 
     /// Auto close timer of the modal. Set in ms (milliseconds).
     static member inline timer (value: float) = Interop.mkSwalAttr "timer" value
@@ -185,22 +187,22 @@ type swal =
     /// If set to false, the user can't dismiss the modal by clicking outside it.
     ///
     /// You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal.
-    static member inline allowOutsideClick (value: bool) = Interop.mkSwalUpdatableAttr "allowOutsideClick" value
+    static member inline allowOutsideClick (value: bool) = Interop.mkSwalAttr "allowOutsideClick" value
 
     /// If set to false, the user can't dismiss the modal by clicking outside it.
     ///
     /// You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal.
-    static member inline allowOutsideClick (handler: unit -> bool) = Interop.mkSwalUpdatableAttr "allowOutsideClick" handler
+    static member inline allowOutsideClick (handler: unit -> bool) = Interop.mkSwalAttr "allowOutsideClick" handler
 
     /// If set to false, the user can't dismiss the modal by pressing the Esc key. 
     ///
     /// You can also pass a custom function returning a boolean value, e.g. if you want to disable the Esc key for the loading state of a modal.
-    static member inline allowEscapeKey (value: bool) = Interop.mkSwalUpdatableAttr "allowEscapeKey" value
+    static member inline allowEscapeKey (value: bool) = Interop.mkSwalAttr "allowEscapeKey" value
 
     /// If set to false, the user can't dismiss the modal by pressing the Esc key. 
     ///
     /// You can also pass a custom function returning a boolean value, e.g. if you want to disable the Esc key for the loading state of a modal.
-    static member inline allowEscapeKey (handler: unit -> bool) = Interop.mkSwalUpdatableAttr "allowEscapeKey" handler
+    static member inline allowEscapeKey (handler: unit -> bool) = Interop.mkSwalAttr "allowEscapeKey" handler
 
     /// If set to false, the user can't confirm the modal by pressing the Enter or Space keys, unless they manually focus the confirm button. 
     ///
@@ -221,62 +223,80 @@ type swal =
     static member inline keydownListenerCapture (value: bool) = Interop.mkSwalAttr "keydownListenerCapture" value
 
     /// If set to false, a "Confirm"-button will not be shown. It can be useful when you're using custom HTML description.
-    static member inline showConfirmButton (value: bool) = Interop.mkSwalUpdatableAttr "showConfirmButton" value
+    static member inline showConfirmButton (value: bool) = Interop.mkSwalAttr "showConfirmButton" value
+
+    /// If set to true, a "Deny"-button will be shown. It can be useful when you want a popup with 3 buttons.
+    static member inline showDenyButton (value: bool) = Interop.mkSwalAttr "showDenyButton" value
 
     /// If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.
-    static member inline showCancelButton (value: bool) = Interop.mkSwalUpdatableAttr "showCancelButton" value
+    static member inline showCancelButton (value: bool) = Interop.mkSwalAttr "showCancelButton" value
 
     /// Use this to change the text on the "Confirm"-button.
-    static member inline confirmButtonText (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonText" value
+    static member inline confirmButtonText (value: string) = Interop.mkSwalAttr "confirmButtonText" value
 
     /// Use this to change the text on the "Confirm"-button.
-    static member inline confirmButtonText (value: ReactElement) = Interop.mkSwalUpdatableAttr "confirmButtonText" value
+    static member inline confirmButtonText (value: ReactElement) = Interop.mkSwalAttr "confirmButtonText" value
+    
+    /// Use this to change the text on the "Deny"-button.
+    static member inline denyButtonText (value: string) = Interop.mkSwalAttr "denyButtonText" value
+
+    /// Use this to change the text on the "Deny"-button.
+    static member inline denyButtonText (value: ReactElement) = Interop.mkSwalAttr "denyButtonText" value
 
     /// Use this to change the text on the "Cancel"-button.
-    static member inline cancelButtonText (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonText" value
+    static member inline cancelButtonText (value: string) = Interop.mkSwalAttr "cancelButtonText" value
 
     /// Use this to change the text on the "Cancel"-button.
-    static member inline cancelButtonText (value: ReactElement) = Interop.mkSwalUpdatableAttr "cancelButtonText" value
+    static member inline cancelButtonText (value: ReactElement) = Interop.mkSwalAttr "cancelButtonText" value
 
     /// Use this to change the background color of the "Confirm"-button. 
     ///
     /// The default color is #3085d6
-    static member inline confirmButtonColor (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonColor" value
+    static member inline confirmButtonColor (value: string) = Interop.mkSwalAttr "confirmButtonColor" value
+
+    /// Use this to change the background color of the "Deny"-button. 
+    static member inline denyButtonColor (value: string) = Interop.mkSwalAttr "denyButtonColor" value
 
     /// Use this to change the background color of the "Cancel"-button.
     ///
     /// The default color is #aaa
-    static member inline cancelButtonColor (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonColor" value
+    static member inline cancelButtonColor (value: string) = Interop.mkSwalAttr "cancelButtonColor" value
 
     /// Use this to change the aria-label for the "Confirm"-button.
-    static member inline confirmButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonAriaLabel" value
+    static member inline confirmButtonAriaLabel (value: string) = Interop.mkSwalAttr "confirmButtonAriaLabel" value
+    
+    /// Use this to change the aria-label for the "Deny"-button.
+    static member inline denyButtonAriaLabel (value: string) = Interop.mkSwalAttr "denyButtonAriaLabel" value
 
     /// Use this to change the aria-label for the "Cancel"-button.
-    static member inline cancelButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonAriaLabel" value
+    static member inline cancelButtonAriaLabel (value: string) = Interop.mkSwalAttr "cancelButtonAriaLabel" value
 
     /// Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to false.
-    static member inline buttonsStyling (value: bool) = Interop.mkSwalUpdatableAttr "buttonsStyling" value
+    static member inline buttonsStyling (value: bool) = Interop.mkSwalAttr "buttonsStyling" value
 
     /// Set to true if you want to invert default buttons positions ("Confirm"-button on the right side).
-    static member inline reverseButtons (value: bool) = Interop.mkSwalUpdatableAttr "reverseButtons" value
+    static member inline reverseButtons (value: bool) = Interop.mkSwalAttr "reverseButtons" value
 
     /// Set to false if you want to focus the first element in tab order instead of "Confirm"-button by default.
     static member inline focusConfirm (value: bool) = Interop.mkSwalAttr "focusConfirm" value
+
+    /// Set to true if you want to focus the "Deny"-button by default.
+    static member inline focusDeny (value: bool) = Interop.mkSwalAttr "focusDeny" value
 
     /// Set to true if you want to focus the "Cancel"-button by default.
     static member inline focusCancel (value: bool) = Interop.mkSwalAttr "focusCancel" value
 
     /// Set to true to show close button in top right corner of the modal.
-    static member inline showCloseButton (value: bool) = Interop.mkSwalUpdatableAttr "showCloseButton" value
+    static member inline showCloseButton (value: bool) = Interop.mkSwalAttr "showCloseButton" value
 
     /// Use this to change the content of the close button.
-    static member inline closeButtonHtml (value: string) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
+    static member inline closeButtonHtml (value: string) = Interop.mkSwalAttr "closeButtonHtml" value
 
     /// Use this to change the content of the close button.
-    static member inline closeButtonHtml (value: ReactElement) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
+    static member inline closeButtonHtml (value: ReactElement) = Interop.mkSwalAttr "closeButtonHtml" value
 
     /// Use this to change the aria-label for the close button.
-    static member inline closeButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "closeButtonAriaLabel" value
+    static member inline closeButtonAriaLabel (value: string) = Interop.mkSwalAttr "closeButtonAriaLabel" value
 
     /// Set to true to disable buttons and show that something is loading. 
     ///
@@ -308,22 +328,22 @@ type swal =
     static member inline preConfirm (handler: 'TInput -> IObservableLike<'TOutput>) = Interop.mkSwalAttr "preConfirm" handler
 
     /// Add a customized icon for the modal. Should contain a string with the path or URL to the image.
-    static member inline imageUrl (value: string) = Interop.mkSwalUpdatableAttr "imageUrl" value
+    static member inline imageUrl (value: string) = Interop.mkSwalAttr "imageUrl" value
 
     /// If imageUrl is set, you can specify imageWidth to describes image width in px.
-    static member inline imageWidth (value: float) = Interop.mkSwalUpdatableAttr "imageWidth" value
+    static member inline imageWidth (value: float) = Interop.mkSwalAttr "imageWidth" value
 
     /// If imageUrl is set, you can specify imageWidth to describes image width in px.
-    static member inline imageWidth (value: int) = Interop.mkSwalUpdatableAttr "imageWidth" value
+    static member inline imageWidth (value: int) = Interop.mkSwalAttr "imageWidth" value
 
     /// Custom image height in px.
-    static member inline imageHeight (value: float) = Interop.mkSwalUpdatableAttr "imageHeight" value
+    static member inline imageHeight (value: float) = Interop.mkSwalAttr "imageHeight" value
 
     /// Custom image height in px.
-    static member inline imageHeight (value: int) = Interop.mkSwalUpdatableAttr "imageHeight" value
+    static member inline imageHeight (value: int) = Interop.mkSwalAttr "imageHeight" value
 
     /// An alternative text for the custom image icon.
-    static member inline imageAlt (value: string) = Interop.mkSwalUpdatableAttr "imageAlt" value
+    static member inline imageAlt (value: string) = Interop.mkSwalAttr "imageAlt" value
 
     /// Input field placeholder.
     static member inline inputPlaceholder (value: string) = Interop.mkSwalAttr "inputPlaceholder" value
@@ -446,12 +466,12 @@ type swal =
     static member inline validationMessage (value: string) = Interop.mkSwalAttr "validationMessage" value
 
     /// Progress steps, useful for modal queues.
-    static member inline progressSteps (value: seq<string>) = Interop.mkSwalUpdatableAttr "progressSteps" (value |> ResizeArray)
+    static member inline progressSteps (value: seq<string>) = Interop.mkSwalAttr "progressSteps" (value |> ResizeArray)
 
     /// Current active progress step. 
     ///
     /// The default is Swal.getQueueStep()
-    static member inline currentProgressStep (value: string) = Interop.mkSwalUpdatableAttr "currentProgressStep" value
+    static member inline currentProgressStep (value: string) = Interop.mkSwalAttr "currentProgressStep" value
 
     /// Distance between progress steps.
     ///
@@ -470,23 +490,23 @@ type swal =
     static member inline onRender (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onRender" handler
 
     /// Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
-    static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalUpdatableAttr "onClose" handler
+    static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onClose" handler
 
     /// Function to run after popup has been disposed by user interaction (and not by another popup).
-    static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onAfterClose" handler
+    static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalAttr "onAfterClose" handler
 
     /// Function to run after popup has been destroyed either by user interaction or by another popup.
-    static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onDestroy" handler
+    static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalAttr "onDestroy" handler
 
 [<Erase;RequireQualifiedAccess>]
 module swal = 
     [<Erase>]
     type icon =
-        static member inline success = Interop.mkSwalUpdatableAttr "icon" "success"
-        static member inline error = Interop.mkSwalUpdatableAttr "icon" "error"
-        static member inline warning = Interop.mkSwalUpdatableAttr "icon" "warning"
-        static member inline info = Interop.mkSwalUpdatableAttr "icon" "info"
-        static member inline question = Interop.mkSwalUpdatableAttr "icon" "question"
+        static member inline success = Interop.mkSwalAttr "icon" "success"
+        static member inline error = Interop.mkSwalAttr "icon" "error"
+        static member inline warning = Interop.mkSwalAttr "icon" "warning"
+        static member inline info = Interop.mkSwalAttr "icon" "info"
+        static member inline question = Interop.mkSwalAttr "icon" "question"
 
     /// Multiple inputs aren't supported, you can achieve them by using html and preConfirm parameters.
     /// Inside the preConfirm() function you can return (or, if async, resolve with) the custom result.
@@ -528,3 +548,184 @@ module swal =
         static member inline column = Interop.mkSwalAttr "grow" "column"
         static member inline fullscreen = Interop.mkSwalAttr "grow" "fullscreen"
         static member inline false' = Interop.mkSwalAttr "grow" false
+
+    [<Erase>]
+    type update =
+        /// The title of the modal, as HTML.
+        static member inline title (value: string) = Interop.mkSwalUpdatableAttr "title" value
+    
+        /// The title of the modal, as HTML.
+        static member inline title (value: HTMLElement) = Interop.mkSwalUpdatableAttr "title" value
+    
+        /// The title of the modal, as HTML.
+        static member inline title (value: ReactElement) = Interop.mkSwalUpdatableAttr "title" value
+    
+        /// The title of the modal, as text. Useful to avoid HTML injection.
+        static member inline titleText (value: string) = Interop.mkSwalUpdatableAttr "titleText" value
+    
+        /// A HTML description for the modal.
+        static member inline html (value: string) = Interop.mkSwalUpdatableAttr "html" value
+    
+        /// A HTML description for the modal.
+        static member inline html (value: HTMLElement) = Interop.mkSwalUpdatableAttr "html" value
+    
+        /// A HTML description for the modal.
+        static member inline html (value: ReactElement) = Interop.mkSwalUpdatableAttr "html" value
+    
+        /// A description for the modal. 
+        ///
+        /// If "text" and "html" parameters are provided in the same time, "text" will be used.
+        static member inline text (value: string) = Interop.mkSwalUpdatableAttr "text" value
+
+        /// CSS classes for animations when hiding a popup (fade out)
+        static member inline hideClass (value: ISwalHideClassProperty) = Interop.mkSwalUpdatableAttr "hideClass" (createObj !![ value ])
+    
+        /// CSS classes for animations when hiding a popup (fade out)
+        static member inline hideClass (value: ISwalHideClassProperty list) = Interop.mkSwalUpdatableAttr "hideClass" (createObj !!value)
+    
+        /// The footer of the modal.
+        static member inline footer (value: string) = Interop.mkSwalUpdatableAttr "footer" value
+    
+        /// The footer of the modal.
+        static member inline footer (value: HTMLElement) = Interop.mkSwalUpdatableAttr "footer" value
+    
+        /// The footer of the modal.
+        static member inline footer (value: ReactElement) = Interop.mkSwalUpdatableAttr "footer" value
+    
+        /// A custom CSS class for the modal.
+        static member inline customClass (value: ISwalCustomClassProperty) = Interop.mkSwalUpdatableAttr "customClass" (createObj !![ value ])
+    
+        /// A custom CSS class for the modal.
+        static member inline customClass (value: ISwalCustomClassProperty list) = Interop.mkSwalUpdatableAttr "customClass" (createObj !!value)
+            
+        /// If set to false, the user can't dismiss the modal by clicking outside it.
+        ///
+        /// You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal.
+        static member inline allowOutsideClick (value: bool) = Interop.mkSwalUpdatableAttr "allowOutsideClick" value
+    
+        /// If set to false, the user can't dismiss the modal by clicking outside it.
+        ///
+        /// You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal.
+        static member inline allowOutsideClick (handler: unit -> bool) = Interop.mkSwalUpdatableAttr "allowOutsideClick" handler
+    
+        /// If set to false, the user can't dismiss the modal by pressing the Esc key. 
+        ///
+        /// You can also pass a custom function returning a boolean value, e.g. if you want to disable the Esc key for the loading state of a modal.
+        static member inline allowEscapeKey (value: bool) = Interop.mkSwalUpdatableAttr "allowEscapeKey" value
+    
+        /// If set to false, the user can't dismiss the modal by pressing the Esc key. 
+        ///
+        /// You can also pass a custom function returning a boolean value, e.g. if you want to disable the Esc key for the loading state of a modal.
+        static member inline allowEscapeKey (handler: unit -> bool) = Interop.mkSwalUpdatableAttr "allowEscapeKey" handler
+    
+        /// If set to false, a "Confirm"-button will not be shown. It can be useful when you're using custom HTML description.
+        static member inline showConfirmButton (value: bool) = Interop.mkSwalUpdatableAttr "showConfirmButton" value
+    
+        /// If set to true, a "Deny"-button will be shown. It can be useful when you want a popup with 3 buttons.
+        static member inline showDenyButton (value: bool) = Interop.mkSwalUpdatableAttr "showDenyButton" value
+    
+        /// If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.
+        static member inline showCancelButton (value: bool) = Interop.mkSwalUpdatableAttr "showCancelButton" value
+    
+        /// Use this to change the text on the "Confirm"-button.
+        static member inline confirmButtonText (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonText" value
+    
+        /// Use this to change the text on the "Confirm"-button.
+        static member inline confirmButtonText (value: ReactElement) = Interop.mkSwalUpdatableAttr "confirmButtonText" value
+        
+        /// Use this to change the text on the "Deny"-button.
+        static member inline denyButtonText (value: string) = Interop.mkSwalUpdatableAttr "denyButtonText" value
+    
+        /// Use this to change the text on the "Deny"-button.
+        static member inline denyButtonText (value: ReactElement) = Interop.mkSwalUpdatableAttr "denyButtonText" value
+    
+        /// Use this to change the text on the "Cancel"-button.
+        static member inline cancelButtonText (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonText" value
+    
+        /// Use this to change the text on the "Cancel"-button.
+        static member inline cancelButtonText (value: ReactElement) = Interop.mkSwalUpdatableAttr "cancelButtonText" value
+    
+        /// Use this to change the background color of the "Confirm"-button. 
+        ///
+        /// The default color is #3085d6
+        static member inline confirmButtonColor (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonColor" value
+    
+        /// Use this to change the background color of the "Deny"-button. 
+        static member inline denyButtonColor (value: string) = Interop.mkSwalUpdatableAttr "denyButtonColor" value
+    
+        /// Use this to change the background color of the "Cancel"-button.
+        ///
+        /// The default color is #aaa
+        static member inline cancelButtonColor (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonColor" value
+    
+        /// Use this to change the aria-label for the "Confirm"-button.
+        static member inline confirmButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "confirmButtonAriaLabel" value
+        
+        /// Use this to change the aria-label for the "Deny"-button.
+        static member inline denyButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "denyButtonAriaLabel" value
+    
+        /// Use this to change the aria-label for the "Cancel"-button.
+        static member inline cancelButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "cancelButtonAriaLabel" value
+    
+        /// Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to false.
+        static member inline buttonsStyling (value: bool) = Interop.mkSwalUpdatableAttr "buttonsStyling" value
+    
+        /// Set to true if you want to invert default buttons positions ("Confirm"-button on the right side).
+        static member inline reverseButtons (value: bool) = Interop.mkSwalUpdatableAttr "reverseButtons" value
+        
+        /// Set to true to show close button in top right corner of the modal.
+        static member inline showCloseButton (value: bool) = Interop.mkSwalUpdatableAttr "showCloseButton" value
+    
+        /// Use this to change the content of the close button.
+        static member inline closeButtonHtml (value: string) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
+    
+        /// Use this to change the content of the close button.
+        static member inline closeButtonHtml (value: ReactElement) = Interop.mkSwalUpdatableAttr "closeButtonHtml" value
+    
+        /// Use this to change the aria-label for the close button.
+        static member inline closeButtonAriaLabel (value: string) = Interop.mkSwalUpdatableAttr "closeButtonAriaLabel" value
+        
+        /// Add a customized icon for the modal. Should contain a string with the path or URL to the image.
+        static member inline imageUrl (value: string) = Interop.mkSwalUpdatableAttr "imageUrl" value
+    
+        /// If imageUrl is set, you can specify imageWidth to describes image width in px.
+        static member inline imageWidth (value: float) = Interop.mkSwalUpdatableAttr "imageWidth" value
+    
+        /// If imageUrl is set, you can specify imageWidth to describes image width in px.
+        static member inline imageWidth (value: int) = Interop.mkSwalUpdatableAttr "imageWidth" value
+    
+        /// Custom image height in px.
+        static member inline imageHeight (value: float) = Interop.mkSwalUpdatableAttr "imageHeight" value
+    
+        /// Custom image height in px.
+        static member inline imageHeight (value: int) = Interop.mkSwalUpdatableAttr "imageHeight" value
+    
+        /// An alternative text for the custom image icon.
+        static member inline imageAlt (value: string) = Interop.mkSwalUpdatableAttr "imageAlt" value
+        
+        /// Progress steps, useful for modal queues.
+        static member inline progressSteps (value: seq<string>) = Interop.mkSwalUpdatableAttr "progressSteps" (value |> ResizeArray)
+    
+        /// Current active progress step. 
+        ///
+        /// The default is Swal.getQueueStep()
+        static member inline currentProgressStep (value: string) = Interop.mkSwalUpdatableAttr "currentProgressStep" value
+        
+        /// Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
+        static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalUpdatableAttr "onClose" handler
+    
+        /// Function to run after popup has been disposed by user interaction (and not by another popup).
+        static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onAfterClose" handler
+    
+        /// Function to run after popup has been destroyed either by user interaction or by another popup.
+        static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onDestroy" handler
+    
+    [<Erase>]
+    module update =
+        [<Erase>]
+        type icon =
+            static member inline success = Interop.mkSwalUpdatableAttr "icon" "success"
+            static member inline error = Interop.mkSwalUpdatableAttr "icon" "error"
+            static member inline warning = Interop.mkSwalUpdatableAttr "icon" "warning"
+            static member inline info = Interop.mkSwalUpdatableAttr "icon" "info"
+            static member inline question = Interop.mkSwalUpdatableAttr "icon" "question"

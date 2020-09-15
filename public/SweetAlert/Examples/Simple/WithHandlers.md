@@ -23,7 +23,7 @@ let render = React.functionComponent (fun () ->
             Html.button [
                 prop.classes [ Bulma.Button; Bulma.HasBackgroundPrimary; Bulma.HasTextWhite; Bulma.IsLarge ]
                 prop.onClick <| fun _ -> 
-                    Swal.Simple.success("Ooo a title!", "Howdy!", SweetAlertResult.ofValue <| fun _ -> setState "You closed it!")
+                    Swal.Simple.success("Ooo a title!", "Howdy!", SweetAlert.Result.ofValue <| fun _ -> setState "You closed it!")
                 prop.text "Fire!"
             ]
         ]

@@ -2,28 +2,29 @@ namespace Feliz.SweetAlert
 
 open Fable.Core
 open Fable.Core.JsInterop
+open System.ComponentModel
 
 [<Erase>]
 type Swal =
     /// Function to display a SweetAlert2 modal.
-    static member inline fire (options: ISwalProperty list) = 
+    static member inline fire (options: #ISwalProperty list) = 
         Bindings.swal.fire (createObj !!options) |> Promise.start
 
     /// Function to display a SweetAlert2 modal.
-    static member inline fire (options: ISwalProperty list, handler: (SweetAlertResult<'T> -> unit)) = 
-        Bindings.swal.fire (createObj !!options) |> Bindings.fireWrapperIgnore handler
+    static member inline fire (options: #ISwalProperty list, handler: (SweetAlert.Result<'T> -> unit)) = 
+        Bindings.swal.fire (createObj !!options) |> Helpers.fireWrapperIgnore handler
 
     /// Determine if modal is shown.
     static member inline isVisible () = Bindings.swal.isVisible()
 
     /// Updates popup options.
-    static member inline update (options: ISwalProperty list) = Bindings.swal.update (createObj !!options)
+    static member inline update (options: ISwalUpdatableProperty list) = Bindings.swal.update (createObj !!options)
 
-    /// Close the currently open SweetAlert2 modal programmatically, the Promise returned by Swal.fire() will be resolved with an empty object { } if no value is provided.
+    /// Close the currently open SweetAlert2 modal programmatically, the Promise returned by Swal.fire () will be resolved with an empty object { } if no value is provided.
     static member inline close () = Bindings.swal.close()
 
-    /// Close the currently open SweetAlert2 modal programmatically, the Promise returned by Swal.fire() will be resolved with an empty object { } if no value is provided.
-    static member inline close (result: SweetAlertResult<'T>) = Bindings.swal.close (result |> Bindings.buildAlertResult)
+    /// Close the currently open SweetAlert2 modal programmatically, the Promise returned by Swal.fire () will be resolved with an empty object { } if no value is provided.
+    static member inline close (result: SweetAlert.Result<'T>) = Bindings.swal.close (result |> Helpers.buildAlertResult)
 
     /// Gets the popup.
     static member inline getPopup () = Bindings.swal.getPopup()
@@ -55,6 +56,9 @@ type Swal =
 
     /// Gets the "Confirm" button.
     static member inline getConfirmButton () = Bindings.swal.getConfirmButton()
+
+    /// Gets the "Deny" button.
+    static member inline getDenyButton () = Bindings.swal.getDenyButton()
 
     /// Gets the "Cancel" button.
     static member inline getCancelButton () = Bindings.swal.getCancelButton()
@@ -88,6 +92,9 @@ type Swal =
 
     /// Clicks the "Confirm"-button programmatically.
     static member inline clickConfirm () = Bindings.swal.clickConfirm()
+
+    /// Clicks the "Deny"-button programmatically.
+    static member inline clickDeny () = Bindings.swal.clickDeny()
 
     /// Clicks the "Cancel"-button programmatically.
     static member inline clickCancel () = Bindings.swal.clickCancel()
@@ -144,12 +151,12 @@ type Swal =
         |> Promise.start
 
     /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
-    static member inline queue (steps: ISwalProperty list, handler: (SweetAlertResult<'T> -> unit)) = 
+    static member inline queue (steps: ISwalProperty list, handler: (SweetAlert.Result<'T> -> unit)) = 
         [ steps ]
         |> List.map (fun props -> (createObj !!props) |> U2.Case1) 
         |> ResizeArray 
         |> Bindings.swal.queue 
-        |> Bindings.fireWrapperIgnore handler
+        |> Helpers.fireWrapperIgnore handler
 
     /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
     static member inline queue (steps: ISwalProperty list list) = 
@@ -160,12 +167,12 @@ type Swal =
         |> Promise.start
 
     /// Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
-    static member inline queue (steps: ISwalProperty list list, handler: (SweetAlertResult<'T> -> unit)) = 
+    static member inline queue (steps: ISwalProperty list list, handler: (SweetAlert.Result<'T> -> unit)) = 
         steps 
         |> List.map (fun props -> (createObj !!props) |> U2.Case1) 
         |> ResizeArray 
         |> Bindings.swal.queue 
-        |> Bindings.fireWrapperIgnore handler
+        |> Helpers.fireWrapperIgnore handler
 
     /// Gets the index of current modal in queue. When there's no active queue, None will be returned.
     static member inline getQueueStep () = Bindings.swal.getQueueStep()
@@ -188,7 +195,7 @@ type Swal =
     /// SweetAlert2's version
     static member inline version () = Bindings.swal.version
 
-[<Erase>]
+[<Erase;RequireQualifiedAccess>]
 module Swal =
     [<Erase>]
     type Simple =
@@ -198,8 +205,8 @@ module Swal =
         static member inline basic (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message ]
 
-        static member inline basic (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message ], handler)
+        static member inline basic (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message ], handler)
 
         static member inline error (message: string) = 
             Swal.fire [ swal.text message; swal.icon.error ]
@@ -207,8 +214,8 @@ module Swal =
         static member inline error (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message; swal.icon.error ]
         
-        static member inline error (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message; swal.icon.error ], handler)
+        static member inline error (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message; swal.icon.error ], handler)
 
         static member inline info (message: string) = 
             Swal.fire [ swal.text message; swal.icon.info ] 
@@ -216,8 +223,8 @@ module Swal =
         static member inline info (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message; swal.icon.info ] 
         
-        static member inline info (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message; swal.icon.info ], handler)
+        static member inline info (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message; swal.icon.info ], handler)
 
         static member inline question (message: string) = 
             Swal.fire [ swal.text message; swal.icon.question ]
@@ -225,8 +232,8 @@ module Swal =
         static member inline question (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message; swal.icon.question ]
         
-        static member inline question (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message; swal.icon.question ], handler)
+        static member inline question (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message; swal.icon.question ], handler)
 
         static member inline success (message: string) = 
             Swal.fire [ swal.text message; swal.icon.success ]
@@ -234,8 +241,8 @@ module Swal =
         static member inline success (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message; swal.icon.success ]
         
-        static member inline success (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message; swal.icon.success ], handler)
+        static member inline success (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message; swal.icon.success ], handler)
 
         static member inline warning (message: string) = 
             Swal.fire [ swal.text message; swal.icon.warning ]
@@ -243,5 +250,63 @@ module Swal =
         static member inline warning (title: string, message: string) = 
             Swal.fire [ swal.title title; swal.text message; swal.icon.warning ]
         
-        static member inline warning (title: string, message: string, handler: (SweetAlertResult<'T> -> unit)) = 
-            Swal.fire([ swal.title title; swal.text message; swal.icon.warning ], handler)
+        static member inline warning (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+            Swal.fire ([ swal.title title; swal.text message; swal.icon.warning ], handler)
+
+    [<Erase>]
+    module Simple =
+        [<Erase>]
+        type Deny =
+            static member inline basic (message: string) =
+                Swal.fire [ swal.text message; swal.showDenyButton true ]
+
+            static member inline basic (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.showDenyButton true ]
+
+            static member inline basic (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.showDenyButton true ], handler)
+
+            static member inline error (message: string) = 
+                Swal.fire [ swal.text message; swal.icon.error; swal.showDenyButton true ]
+
+            static member inline error (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.icon.error; swal.showDenyButton true ]
+        
+            static member inline error (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.icon.error; swal.showDenyButton true ], handler)
+
+            static member inline info (message: string) = 
+                Swal.fire [ swal.text message; swal.icon.info; swal.showDenyButton true ] 
+
+            static member inline info (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.icon.info; swal.showDenyButton true ] 
+        
+            static member inline info (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.icon.info; swal.showDenyButton true ], handler)
+
+            static member inline question (message: string) = 
+                Swal.fire [ swal.text message; swal.icon.question; swal.showDenyButton true ]
+
+            static member inline question (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.icon.question; swal.showDenyButton true ]
+        
+            static member inline question (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.icon.question; swal.showDenyButton true ], handler)
+
+            static member inline success (message: string) = 
+                Swal.fire [ swal.text message; swal.icon.success; swal.showDenyButton true ]
+
+            static member inline success (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.icon.success; swal.showDenyButton true ]
+        
+            static member inline success (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.icon.success; swal.showDenyButton true ], handler)
+
+            static member inline warning (message: string) = 
+                Swal.fire [ swal.text message; swal.icon.warning; swal.showDenyButton true ]
+
+            static member inline warning (title: string, message: string) = 
+                Swal.fire [ swal.title title; swal.text message; swal.icon.warning; swal.showDenyButton true ]
+        
+            static member inline warning (title: string, message: string, handler: (SweetAlert.Result<'T> -> unit)) = 
+                Swal.fire ([ swal.title title; swal.text message; swal.icon.warning; swal.showDenyButton true ], handler)

@@ -1,6 +1,6 @@
 {
   "name": "feliz.-sweet-alert",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Fable bindings written in the Feliz-style for sweetalert2",
   "homepage": "https://github.com/Shmew/Feliz.SweetAlert",
   "bugs": {
@@ -24,7 +24,7 @@
     "react-highlight": "^0",
     "react-markdown": "^4",
     "source-map-support": "^0",
-    "sweetalert2": "^9",
+    "sweetalert2": "^10",
     "sweetalert2-react-content": "^3"
   },
   "devDependencies": {

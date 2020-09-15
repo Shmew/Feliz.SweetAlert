@@ -27,7 +27,7 @@ let render = React.functionComponent (fun () ->
                             | Some _ -> None
                             | _ -> Some "That's not right!"
                         )
-                    ], SweetAlertResult.ofValue (sprintf "You entered %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "You entered %s" >> Swal.Simple.basic))
                 prop.text "Text"
             ]
             Html.button [
@@ -37,7 +37,7 @@ let render = React.functionComponent (fun () ->
                         swal.title "Input email address"
                         swal.input.email
                         swal.inputPlaceholder "Enter your email address"
-                    ], SweetAlertResult.ofValue (sprintf "Entered email: %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "Entered email: %s" >> Swal.Simple.basic))
                 prop.text "Email"
             ]
             Html.button [
@@ -46,7 +46,7 @@ let render = React.functionComponent (fun () ->
                     Swal.fire ([
                         swal.input.url
                         swal.inputPlaceholder "Enter the URL"
-                    ], SweetAlertResult.ofValue (sprintf "Entered URL: %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "Entered URL: %s" >> Swal.Simple.basic))
                 prop.text "Url"
             ]
             Html.button [
@@ -61,7 +61,7 @@ let render = React.functionComponent (fun () ->
                             Interop.mkAttr "autoCorrect" "off"
                         ]
                         swal.inputPlaceholder "Enter your password"
-                    ], SweetAlertResult.ofValue (sprintf "Entered password: %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "Entered password: %s" >> Swal.Simple.basic))
                 prop.text "Password"
             ]
             Html.button [
@@ -71,7 +71,7 @@ let render = React.functionComponent (fun () ->
                         swal.input.textArea
                         swal.inputPlaceholder "Type your message here..."
                         swal.showCancelButton true
-                    ], SweetAlertResult.ofValue Swal.Simple.basic)
+                    ], SweetAlert.Result.ofValue Swal.Simple.basic)
                 prop.text "Textarea"
             ]
             Html.button [
@@ -96,7 +96,7 @@ let render = React.functionComponent (fun () ->
                                     | _ -> Some "You need to select oranges :)"
                             }
                         )
-                    ], SweetAlertResult.ofValue (sprintf "You selected: %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "You selected: %s" >> Swal.Simple.basic))
                 prop.text "Select"
             ]
             Html.button [
@@ -117,7 +117,7 @@ let render = React.functionComponent (fun () ->
                         swal.inputValidator (function
                             | None -> Some "You need to choose something!" 
                             | _ -> None)
-                    ], SweetAlertResult.ofValue (sprintf "You selected: %s" >> Swal.Simple.basic))
+                    ], SweetAlert.Result.ofValue (sprintf "You selected: %s" >> Swal.Simple.basic))
                 prop.text "Radio"
             ]
             Html.button [
@@ -138,7 +138,7 @@ let render = React.functionComponent (fun () ->
                             | None -> Some "You need to agree with T&C"
                             | _ -> None
                         )
-                    ], SweetAlertResult.ofValue (fun _ -> Swal.Simple.basic "You agreed with T&C! :)"))
+                    ], SweetAlert.Result.ofValue (fun _ -> Swal.Simple.basic "You agreed with T&C! :)"))
                 prop.text "Checkbox"
             ]
             Html.button [
@@ -150,7 +150,7 @@ let render = React.functionComponent (fun () ->
                         swal.inputAttributes [
                             prop.accept "image/*"
                         ]
-                    ], SweetAlertResult.ofValue (fun img ->
+                    ], SweetAlert.Result.ofValue (fun img ->
                         async {
                             let fr = Browser.Dom.FileReader.Create()
                             fr.onload <- (fun e -> 

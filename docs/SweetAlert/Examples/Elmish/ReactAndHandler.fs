@@ -2,7 +2,6 @@
 module Samples.Elmish.ReactAndHandler
 
 open Elmish
-open Fable.Core.JsInterop
 open Feliz
 open Feliz.ElmishComponents
 open Feliz.SweetAlert
@@ -80,7 +79,7 @@ let update msg model =
             swal.cancelButtonText (cancelButtonComp())
         ], (fun res -> 
             match res with
-            | SweetAlertResult.ResultValue _ -> Some (GetResponse "I'm glad you like it!")
+            | SweetAlert.Result.Value _ -> Some (GetResponse "I'm glad you like it!")
             | _ -> None))
 
 let view = React.functionComponent (fun (input: {| model: Model; dispatch: Msg -> unit |}) ->
