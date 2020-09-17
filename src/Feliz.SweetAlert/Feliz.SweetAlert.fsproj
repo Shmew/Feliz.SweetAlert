@@ -17,7 +17,7 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="sweetalert2" Version="gte 10 lt 10" ResolutionStrategy="max" />
+      <NpmPackage Name="sweetalert2" Version="gte 10.1 lt 10" ResolutionStrategy="max" />
       <NpmPackage Name="sweetalert2-react-content" Version="gte 3.2 lt 4" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>

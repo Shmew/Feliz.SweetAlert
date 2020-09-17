@@ -1,3 +1,6 @@
+### 2.1.0 - Thursday, September 17, 2020
+* Update for sweetalert2 version 10.1
+
 ### 2.0.0 - Tuesday, September 15, 2020
 * Update for sweetalert2 version 10
 * Update for sweetalert-react-content version 3.2

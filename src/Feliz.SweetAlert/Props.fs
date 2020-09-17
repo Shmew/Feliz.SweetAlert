@@ -262,6 +262,11 @@ type swal =
     /// The default color is #aaa
     static member inline cancelButtonColor (value: string) = Interop.mkSwalAttr "cancelButtonColor" value
 
+    /// Changes the color of the icon
+    ///
+    /// The default color is #fff
+    static member inline iconColor (value: string) = Interop.mkSwalAttr "iconColor" value
+
     /// Use this to change the aria-label for the "Confirm"-button.
     static member inline confirmButtonAriaLabel (value: string) = Interop.mkSwalAttr "confirmButtonAriaLabel" value
     
