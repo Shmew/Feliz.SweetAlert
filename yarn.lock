@@ -4557,9 +4557,9 @@ regexp.prototype.flags@^1.2.0:
     es-abstract "^1.17.0-next.1"
 
 regexpu-core@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.7.0.tgz#fcbf458c50431b0bb7b45d6967b8192d91f3d938"
-  integrity sha512-TQ4KXRnIn6tz6tjnrXEkD/sshygKH/j5KzK86X8MkeHyZ8qst/LZ89j3X4/8HEIfHANTFIP/AbXakeRhWIl5YQ==
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.7.1.tgz#2dea5a9a07233298fbf0db91fa9abc4c6e0f8ad6"
+  integrity sha512-ywH2VUraA44DZQuRKzARmw6S66mr48pQVva4LBeRhcOltJ6hExvWly5ZjFLYo67xbIxb6W1q4bAGtgfEl20zfQ==
   dependencies:
     regenerate "^1.4.0"
     regenerate-unicode-properties "^8.2.0"
@@ -5251,9 +5251,9 @@ sweetalert2-react-content@^3:
   integrity sha512-Zd75ZZZh7byFHIppsBl04NrIpqQUyjIazBrCb6NwZIDi7Uv7gbvTGO5+yJqgAzjrY29lXOUOyLmY2riKoc69Pg==
 
 sweetalert2@^10:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.1.0.tgz#a782165d626d939f014ace1ec7edd986b910f914"
-  integrity sha512-r+hFEkHv90M32vmo+Q+qNTPcfcKuN8b3Pn6zcXGrkNLvZtIn1XzY2uLJTFZUQ8hR96mCxDmRcEMXzxX7sEgyWA==
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.2.0.tgz#81d01ebd5d775d5a307430a19f043ffbf7bf579c"
+  integrity sha512-rFDcsFbc0NGryGl0iUSzwAAgM3vjpVFVJbqyjjufgCyCOlWNjz1/ZD9enyG40oGd2no088EcYLpcg2fwYon2jA==
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"
@@ -5776,9 +5776,9 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-map "~0.6.1"
 
 webpack@^4:
-  version "4.44.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.44.1.tgz#17e69fff9f321b8f117d1fda714edfc0b939cc21"
-  integrity sha512-4UOGAohv/VGUNQJstzEywwNxqX417FnjZgZJpJQegddzPmTvph37eBIRbRTfdySXzVtJXLJfbMN3mMYhM6GdmQ==
+  version "4.44.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.44.2.tgz#6bfe2b0af055c8b2d1e90ed2cd9363f841266b72"
+  integrity sha512-6KJVGlCxYdISyurpQ0IPTklv+DULv05rs2hseIXer6D7KrUicRDLFb4IUM1S6LUAKypPM/nSiVSuv8jHu1m3/Q==
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/helper-module-context" "1.9.0"
