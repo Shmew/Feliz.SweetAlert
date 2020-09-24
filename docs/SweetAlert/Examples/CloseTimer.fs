@@ -40,7 +40,7 @@ let render = React.functionComponent (fun () ->
                         swal.title "Auto close alert!"
                         swal.html (closeTimer())
                         swal.timer 2000
-                        swal.onBeforeOpen(fun _ -> Swal.showLoading())
+                        swal.willOpen(fun _ -> Swal.showLoading())
                     ]
                 prop.text "Fire!"
             ]

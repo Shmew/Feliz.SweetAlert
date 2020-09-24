@@ -484,24 +484,24 @@ type swal =
     static member inline progressStepsDistance (value: string) = Interop.mkSwalAttr "progressStepsDistance" value
 
     /// Function to run when modal built, but not shown yet. Provides modal DOM element.
-    static member inline onBeforeOpen (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onBeforeOpen" handler
+    static member inline willOpen (handler: HTMLElement -> unit) = Interop.mkSwalAttr "willOpen" handler
 
     /// Function to run when modal opens, provides modal DOM element.
-    static member inline onOpen (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onOpen" handler
+    static member inline didOpen (handler: HTMLElement -> unit) = Interop.mkSwalAttr "didOpen" handler
 
     /// Function to run after modal DOM has been updated. Typically, this will happen after Swal.fire() or Swal.update(). 
     ///
-    /// If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
-    static member inline onRender (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onRender" handler
+    /// If you want to perform changes in the modal's DOM, that survive Swal.update(), didRender is a good place for that.
+    static member inline didRender (handler: HTMLElement -> unit) = Interop.mkSwalAttr "didRender" handler
 
     /// Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
-    static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalAttr "onClose" handler
+    static member inline willClose (handler: HTMLElement -> unit) = Interop.mkSwalAttr "willClose" handler
 
     /// Function to run after popup has been disposed by user interaction (and not by another popup).
-    static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalAttr "onAfterClose" handler
+    static member inline didClose (handler: unit -> unit) = Interop.mkSwalAttr "didClose" handler
 
     /// Function to run after popup has been destroyed either by user interaction or by another popup.
-    static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalAttr "onDestroy" handler
+    static member inline didDestroy (handler: unit -> unit) = Interop.mkSwalAttr "didDestroy" handler
 
 [<Erase;RequireQualifiedAccess>]
 module swal = 
@@ -722,13 +722,23 @@ module swal =
         static member inline currentProgressStep (value: string) = Interop.mkSwalUpdatableAttr "currentProgressStep" value
         
         /// Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
-        static member inline onClose (handler: HTMLElement -> unit) = Interop.mkSwalUpdatableAttr "onClose" handler
+        static member inline willClose (handler: HTMLElement -> unit) = Interop.mkSwalUpdatableAttr "willClose" handler
     
         /// Function to run after popup has been disposed by user interaction (and not by another popup).
-        static member inline onAfterClose (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onAfterClose" handler
+        static member inline didClose (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "didClose" handler
     
         /// Function to run after popup has been destroyed either by user interaction or by another popup.
-        static member inline onDestroy (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "onDestroy" handler
+        static member inline didDestroy (handler: unit -> unit) = Interop.mkSwalUpdatableAttr "didDestroy" handler
+
+        /// Modal window background (CSS background property). 
+        ///
+        /// The default background is '#fff'.
+        static member inline background (value: #IStyleAttribute) = Interop.mkSwalUpdatableAttr "background" (Helpers.getKVV value)
+
+        /// Modal window background (CSS background property). 
+        ///
+        /// The default background is '#fff'.
+        static member inline background (value: IStyleAttribute list) = Interop.mkSwalUpdatableAttr "background" (createObj !!(value |> List.map Helpers.getKVV))
     
     [<Erase>]
     module update =
