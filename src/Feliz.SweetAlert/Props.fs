@@ -54,6 +54,8 @@ type customClass =
     static member inline cancelButton (value: string list) = Interop.mkSwalCustomClassAttr "cancelButton" (value |> String.concat " ")
     static member inline footer (value: string) = Interop.mkSwalCustomClassAttr "footer" value
     static member inline footer (value: string list) = Interop.mkSwalCustomClassAttr "footer" (value |> String.concat " ")
+    static member inline validationMessage (value: string) = Interop.mkSwalCustomClassAttr "validationMessage" value
+    static member inline validationMessage (value: string list) = Interop.mkSwalCustomClassAttr "validationMessage" (value |> String.concat " ")
 
 [<Erase>]
 type swal =
@@ -350,6 +352,9 @@ type swal =
     /// An alternative text for the custom image icon.
     static member inline imageAlt (value: string) = Interop.mkSwalAttr "imageAlt" value
 
+    /// Input field label.
+    static member inline inputLabel (value: string) = Interop.mkSwalAttr "inputLabel" value
+
     /// Input field placeholder.
     static member inline inputPlaceholder (value: string) = Interop.mkSwalAttr "inputPlaceholder" value
 
@@ -415,7 +420,6 @@ type swal =
     ///
     /// If the input type is text, email, number, tel or textarea a Promise can be accepted as inputValue.
     static member inline inputValue (value: IObservableLike<int>) = Interop.mkSwalAttr "inputValue" value
-
 
     /// If input parameter is set to "select" or "radio", you can provide options. 
     /// Can be a list or a plain object, with keys that represent option values and values that represent option text, or a Promise that resolves with one of those types.
