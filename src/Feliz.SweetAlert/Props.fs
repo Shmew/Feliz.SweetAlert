@@ -8,52 +8,54 @@ open FSharp.Core
 
 [<Erase>]
 type showClass =
-    static member inline popup (value: string) = Interop.mkSwalShowClassAttr "popup" value
-    static member inline popup (value: string list) = Interop.mkSwalShowClassAttr "popup" (value |> String.concat " ")
     static member inline backdrop (value: string) = Interop.mkSwalShowClassAttr "backdrop" value
     static member inline backdrop (value: string list) = Interop.mkSwalShowClassAttr "backdrop" (value |> String.concat " ")
     static member inline icon (value: string) = Interop.mkSwalShowClassAttr "icon" value
     static member inline icon (value: string list) = Interop.mkSwalShowClassAttr "icon" (value |> String.concat " ")
+    static member inline popup (value: string) = Interop.mkSwalShowClassAttr "popup" value
+    static member inline popup (value: string list) = Interop.mkSwalShowClassAttr "popup" (value |> String.concat " ")
 
 [<Erase>]
 type hideClass =
-    static member inline popup (value: string) = Interop.mkSwalHideClassAttr "popup" value
-    static member inline popup (value: string list) = Interop.mkSwalHideClassAttr "popup" (value |> String.concat " ")
     static member inline backdrop (value: string) = Interop.mkSwalHideClassAttr "backdrop" value
     static member inline backdrop (value: string list) = Interop.mkSwalHideClassAttr "backdrop" (value |> String.concat " ")
     static member inline icon (value: string) = Interop.mkSwalHideClassAttr "icon" value
     static member inline icon (value: string list) = Interop.mkSwalHideClassAttr "icon" (value |> String.concat " ")
+    static member inline popup (value: string) = Interop.mkSwalHideClassAttr "popup" value
+    static member inline popup (value: string list) = Interop.mkSwalHideClassAttr "popup" (value |> String.concat " ")
 
 [<Erase>]
 type customClass =
-    static member inline container (value: string) = Interop.mkSwalCustomClassAttr "container" value
-    static member inline container (value: string list) = Interop.mkSwalCustomClassAttr "container" (value |> String.concat " ")
-    static member inline popup (value: string) = Interop.mkSwalCustomClassAttr "popup" value
-    static member inline popup (value: string list) = Interop.mkSwalCustomClassAttr "popup" (value |> String.concat " ")
-    static member inline header (value: string) = Interop.mkSwalCustomClassAttr "header" value
-    static member inline header (value: string list) = Interop.mkSwalCustomClassAttr "header" (value |> String.concat " ")
-    static member inline title (value: string) = Interop.mkSwalCustomClassAttr "title" value
-    static member inline title (value: string list) = Interop.mkSwalCustomClassAttr "title" (value |> String.concat " ")
+    static member inline actions (value: string) = Interop.mkSwalCustomClassAttr "actions" value
+    static member inline actions (value: string list) = Interop.mkSwalCustomClassAttr "actions" (value |> String.concat " ")
+    static member inline cancelButton (value: string) = Interop.mkSwalCustomClassAttr "cancelButton" value
+    static member inline cancelButton (value: string list) = Interop.mkSwalCustomClassAttr "cancelButton" (value |> String.concat " ")
     static member inline closeButton (value: string) = Interop.mkSwalCustomClassAttr "closeButton" value
     static member inline closeButton (value: string list) = Interop.mkSwalCustomClassAttr "closeButton" (value |> String.concat " ")
+    static member inline confirmButton (value: string) = Interop.mkSwalCustomClassAttr "confirmButton" value
+    static member inline confirmButton (value: string list) = Interop.mkSwalCustomClassAttr "confirmButton" (value |> String.concat " ")
+    static member inline container (value: string) = Interop.mkSwalCustomClassAttr "container" value
+    static member inline container (value: string list) = Interop.mkSwalCustomClassAttr "container" (value |> String.concat " ")
+    static member inline content (value: string) = Interop.mkSwalCustomClassAttr "content" value
+    static member inline content (value: string list) = Interop.mkSwalCustomClassAttr "content" (value |> String.concat " ")
+    static member inline denyButton (value: string) = Interop.mkSwalCustomClassAttr "denyButton" value
+    static member inline denyButton (value: string list) = Interop.mkSwalCustomClassAttr "denyButton" (value |> String.concat " ")
+    static member inline footer (value: string) = Interop.mkSwalCustomClassAttr "footer" value
+    static member inline footer (value: string list) = Interop.mkSwalCustomClassAttr "footer" (value |> String.concat " ")
+    static member inline header (value: string) = Interop.mkSwalCustomClassAttr "header" value
+    static member inline header (value: string list) = Interop.mkSwalCustomClassAttr "header" (value |> String.concat " ")
     static member inline icon (value: string) = Interop.mkSwalCustomClassAttr "icon" value
     static member inline icon (value: string list) = Interop.mkSwalCustomClassAttr "icon" (value |> String.concat " ")
     static member inline image (value: string) = Interop.mkSwalCustomClassAttr "image" value
     static member inline image (value: string list) = Interop.mkSwalCustomClassAttr "image" (value |> String.concat " ")
-    static member inline content (value: string) = Interop.mkSwalCustomClassAttr "content" value
-    static member inline content (value: string list) = Interop.mkSwalCustomClassAttr "content" (value |> String.concat " ")
     static member inline input (value: string) = Interop.mkSwalCustomClassAttr "input" value
     static member inline input (value: string list) = Interop.mkSwalCustomClassAttr "input" (value |> String.concat " ")
-    static member inline actions (value: string) = Interop.mkSwalCustomClassAttr "actions" value
-    static member inline actions (value: string list) = Interop.mkSwalCustomClassAttr "actions" (value |> String.concat " ")
-    static member inline confirmButton (value: string) = Interop.mkSwalCustomClassAttr "confirmButton" value
-    static member inline confirmButton (value: string list) = Interop.mkSwalCustomClassAttr "confirmButton" (value |> String.concat " ")
-    static member inline denyButton (value: string) = Interop.mkSwalCustomClassAttr "denyButton" value
-    static member inline denyButton (value: string list) = Interop.mkSwalCustomClassAttr "denyButton" (value |> String.concat " ")
-    static member inline cancelButton (value: string) = Interop.mkSwalCustomClassAttr "cancelButton" value
-    static member inline cancelButton (value: string list) = Interop.mkSwalCustomClassAttr "cancelButton" (value |> String.concat " ")
-    static member inline footer (value: string) = Interop.mkSwalCustomClassAttr "footer" value
-    static member inline footer (value: string list) = Interop.mkSwalCustomClassAttr "footer" (value |> String.concat " ")
+    static member inline loader (value: string) = Interop.mkSwalCustomClassAttr "loader" value
+    static member inline loader (value: string list) = Interop.mkSwalCustomClassAttr "loader" (value |> String.concat " ")
+    static member inline popup (value: string) = Interop.mkSwalCustomClassAttr "popup" value
+    static member inline popup (value: string list) = Interop.mkSwalCustomClassAttr "popup" (value |> String.concat " ")
+    static member inline title (value: string) = Interop.mkSwalCustomClassAttr "title" value
+    static member inline title (value: string list) = Interop.mkSwalCustomClassAttr "title" (value |> String.concat " ")
     static member inline validationMessage (value: string) = Interop.mkSwalCustomClassAttr "validationMessage" value
     static member inline validationMessage (value: string list) = Interop.mkSwalCustomClassAttr "validationMessage" (value |> String.concat " ")
 
