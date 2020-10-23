@@ -336,6 +336,27 @@ type swal =
     /// - None to keep the default result.value
     static member inline preConfirm (handler: 'TInput -> IObservableLike<'TOutput>) = Interop.mkSwalAttr "preConfirm" handler
 
+    /// Function to execute before deny.
+    /// Returned (or resolved) value can be:
+    /// - false to prevent a popup from closing
+    /// - anything else to pass that value as the result.value of Swal.fire()
+    /// - None to keep the default result.value
+    static member inline preDeny (handler: 'TInput -> 'TOutput) = Interop.mkSwalAttr "preDeny" handler
+
+    /// Function to execute before deny.
+    /// Returned (or resolved) value can be:
+    /// - false to prevent a popup from closing
+    /// - anything else to pass that value as the result.value of Swal.fire()
+    /// - None to keep the default result.value
+    static member inline preDeny (handler: 'TInput -> JS.Promise<'TOutput>) = Interop.mkSwalAttr "preDeny" handler
+
+    /// Function to execute before deny.
+    /// Returned (or resolved) value can be:
+    /// - false to prevent a popup from closing
+    /// - anything else to pass that value as the result.value of Swal.fire()
+    /// - None to keep the default result.value
+    static member inline preDeny (handler: 'TInput -> IObservableLike<'TOutput>) = Interop.mkSwalAttr "preDeny" handler
+
     /// Add a customized icon for the modal. Should contain a string with the path or URL to the image.
     static member inline imageUrl (value: string) = Interop.mkSwalAttr "imageUrl" value
 
