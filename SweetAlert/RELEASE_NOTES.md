@@ -1,3 +1,6 @@
+### 2.7.0 - Wednesday, November 18, 2020
+* Update for sweetalert2 version 10.10
+
 ### 2.6.0 - Friday, October 23, 2020
 * Update for sweetalert2 version 10.8
 
