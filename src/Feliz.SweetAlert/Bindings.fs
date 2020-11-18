@@ -76,7 +76,7 @@ module InternalTypes =
         /// Gets the image.
         abstract getImage: unit -> HTMLElement
         /// Gets the close button.
-        abstract getCloseButton: unit -> HTMLElement
+        abstract getCloseButton: unit -> HTMLElement option
         /// Gets the current visible icon.
         abstract getIcon: unit -> HTMLElement option
         /// Gets all icons. The current visible icon will have `style="display: flex"`,
@@ -101,7 +101,7 @@ module InternalTypes =
         /// Disables "Confirm" and "Cancel" buttons.
         abstract disableButtons: unit -> unit
         /// Disables buttons and show loader. This is useful with AJAX requests.
-        abstract showLoading: unit -> unit
+        abstract showLoading: ?button: #HTMLElement -> unit
         /// Enables buttons and hide loader.
         abstract hideLoading: unit -> unit
         /// Determines if modal is in the loading state.

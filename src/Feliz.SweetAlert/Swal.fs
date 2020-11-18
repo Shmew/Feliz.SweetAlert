@@ -82,7 +82,7 @@ type Swal =
     static member inline disableButtons () = Bindings.swal.disableButtons()
 
     /// Disables buttons and show loader. This is useful with AJAX requests.
-    static member inline showLoading () = Bindings.swal.showLoading()
+    static member inline showLoading (?button: #Browser.Types.HTMLElement) = Bindings.swal.showLoading(?button = button)
 
     /// Enables buttons and hide loader.
     static member inline hideLoading () = Bindings.swal.hideLoading()

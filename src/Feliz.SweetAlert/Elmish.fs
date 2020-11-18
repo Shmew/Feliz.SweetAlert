@@ -62,7 +62,7 @@ module Cmd =
             Bindings.swal.getImage() |> handler |> Helpers.elmishMsgHandler
 
         /// Gets the close button.
-        static member inline getCloseButton (handler: HTMLElement -> 'Msg option) : Cmd<_> = 
+        static member inline getCloseButton (handler: HTMLElement option -> 'Msg option) : Cmd<_> = 
              Bindings.swal.getCloseButton() |> handler |> Helpers.elmishMsgHandler
 
         /// Gets the current visible icon.
