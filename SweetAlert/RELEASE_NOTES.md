@@ -1,3 +1,6 @@
+### 2.8.0 - Sunday, February 28, 2021
+* Update for sweetalert2 version 10.15
+
 ### 2.7.1 - Wednesday, November 18, 2020
 * Fix FSharp.Core version restriction
 
