@@ -2,7 +2,6 @@ namespace Feliz.SweetAlert
 
 open Fable.Core
 open Fable.Core.JsInterop
-open System.ComponentModel
 
 [<Erase>]
 type Swal =

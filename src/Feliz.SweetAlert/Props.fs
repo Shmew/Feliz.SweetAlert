@@ -44,12 +44,16 @@ type customClass =
     static member inline footer (value: string list) = Interop.mkSwalCustomClassAttr "footer" (value |> String.concat " ")
     static member inline header (value: string) = Interop.mkSwalCustomClassAttr "header" value
     static member inline header (value: string list) = Interop.mkSwalCustomClassAttr "header" (value |> String.concat " ")
+    static member inline htmlContainer (value: string) = Interop.mkSwalCustomClassAttr "htmlContainer" value
+    static member inline htmlContainer (value: string list) = Interop.mkSwalCustomClassAttr "htmlContainer" (value |> String.concat " ")
     static member inline icon (value: string) = Interop.mkSwalCustomClassAttr "icon" value
     static member inline icon (value: string list) = Interop.mkSwalCustomClassAttr "icon" (value |> String.concat " ")
     static member inline image (value: string) = Interop.mkSwalCustomClassAttr "image" value
     static member inline image (value: string list) = Interop.mkSwalCustomClassAttr "image" (value |> String.concat " ")
     static member inline input (value: string) = Interop.mkSwalCustomClassAttr "input" value
     static member inline input (value: string list) = Interop.mkSwalCustomClassAttr "input" (value |> String.concat " ")
+    static member inline inputLabel (value: string) = Interop.mkSwalCustomClassAttr "inputLabel" value
+    static member inline inputLabel (value: string list) = Interop.mkSwalCustomClassAttr "inputLabel" (value |> String.concat " ")
     static member inline loader (value: string) = Interop.mkSwalCustomClassAttr "loader" value
     static member inline loader (value: string list) = Interop.mkSwalCustomClassAttr "loader" (value |> String.concat " ")
     static member inline popup (value: string) = Interop.mkSwalCustomClassAttr "popup" value
@@ -89,6 +93,12 @@ type swal =
 
     /// The custom HTML content for an icon.
     static member inline iconHtml (value: string) = Interop.mkSwalAttr "iconHtml" value
+    
+    /// The custom HTML content for an icon.
+    static member inline iconHtml (value: HTMLElement) = Interop.mkSwalAttr "iconHtml" value
+    
+    /// The custom HTML content for an icon.
+    static member inline iconHtml (value: ReactElement) = Interop.mkSwalAttr "iconHtml" value
 
     /// CSS classes for animations when showing a popup (fade in)
     static member inline showClass (value: ISwalShowClassProperty) = Interop.mkSwalAttr "showClass" (createObj !![ value ])
@@ -307,10 +317,15 @@ type swal =
     /// Use this to change the aria-label for the close button.
     static member inline closeButtonAriaLabel (value: string) = Interop.mkSwalAttr "closeButtonAriaLabel" value
 
-    /// Set to true to disable buttons and show that something is loading. 
+    /// Set to true to disable buttons and show the loader instead of the Confirm button. 
     ///
     /// Use it in combination with the preConfirm parameter.
     static member inline showLoaderOnConfirm (value: bool) = Interop.mkSwalAttr "showLoaderOnConfirm" value
+    
+    /// Set to true to disable buttons and show the loader instead of the Deny button.
+    ///
+    /// Use it in combination with the preConfirm parameter.
+    static member inline showLoaderOnDeny (value: bool) = Interop.mkSwalAttr "showLoaderOnDeny" value
 
     /// Set to false to disable body padding adjustment when the page scrollbar gets hidden while the modal is shown
     static member inline scrollbarPadding (value: bool) = Interop.mkSwalAttr "scrollbarPadding" value
@@ -541,6 +556,7 @@ module swal =
         static member inline question = Interop.mkSwalAttr "icon" "question"
 
     /// Multiple inputs aren't supported, you can achieve them by using html and preConfirm parameters.
+    ///
     /// Inside the preConfirm() function you can return (or, if async, resolve with) the custom result.
     [<Erase>]
     type input =
@@ -608,6 +624,15 @@ module swal =
         ///
         /// If "text" and "html" parameters are provided in the same time, "text" will be used.
         static member inline text (value: string) = Interop.mkSwalUpdatableAttr "text" value
+        
+        /// The custom HTML content for an icon.
+        static member inline iconHtml (value: string) = Interop.mkSwalUpdatableAttr "iconHtml" value
+        
+        /// The custom HTML content for an icon.
+        static member inline iconHtml (value: HTMLElement) = Interop.mkSwalUpdatableAttr "iconHtml" value
+        
+        /// The custom HTML content for an icon.
+        static member inline iconHtml (value: ReactElement) = Interop.mkSwalUpdatableAttr "iconHtml" value
 
         /// CSS classes for animations when hiding a popup (fade out)
         static member inline hideClass (value: ISwalHideClassProperty) = Interop.mkSwalUpdatableAttr "hideClass" (createObj !![ value ])

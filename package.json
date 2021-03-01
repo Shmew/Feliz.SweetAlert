@@ -1,6 +1,6 @@
 {
   "name": "feliz.-sweet-alert",
-  "version": "2.7.1",
+  "version": "2.8.0",
   "description": "Fable bindings written in the Feliz-style for sweetalert2",
   "homepage": "https://github.com/Shmew/Feliz.SweetAlert",
   "bugs": {
@@ -34,6 +34,7 @@
     "core-js": "^3",
     "fable-compiler": "^2",
     "fable-loader": "^2",
+    "fable-splitter": "^2",
     "file-loader": "^4",
     "gh-pages": "^2",
     "html-webpack-plugin": "^3",
